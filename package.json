@@ -1,0 +1,21 @@
+{
+  "name": "face-chat",
+  "version": "1.0.0",
+  "description": "this is the rapidqube face-chat application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kavitha Rajasekaran",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "moment": "^2.25.1",
+    "mongoose": "^5.9.10",
+    "mongoose-type-url": "^2.0.0",
+    "socket.io": "^2.3.0"
+  }
+}
