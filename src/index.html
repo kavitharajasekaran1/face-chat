@@ -16,15 +16,24 @@
     <script type="module" src='assets/js/events.js'></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src='/socket.io/socket.io.js'></script>
+
       
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  crossorigin="anonymous">
     <link rel='stylesheet' href='assets/css/app.css' type="text/css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 
 </head>
 <body>
@@ -32,23 +41,49 @@
        
        
            
-            <nav>
-                <div class="nav-wrapper" style="background-color:white;">
-                    <img src="./assets/images/Group 548@3x.png"
+           
+
+              <nav class="navbar navbar-expand-sm navbar-dark bg-white d-flex justify-content-between">
+                <!-- Brand -->
+                <!-- <a class="navbar-brand" href="#">Logo</a> -->
+                <img src="./assets/images/Group 548@3x.png"
                     srcset="img/group-548@2x.png 2x,
                             img/group-548@3x.png 3x"
-                    class="Group-548"> 
-                    <!-- <a href="#" class="brand-logo">Logo</a> -->
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      <li><a href="sass.html" style="font-size: 20px;color: black;" class="active">JOIN A MEETING</a></li>
-                    <li><a href="badges.html" style="font-size: 20px;color: black;">HOSTING A MEETING</a></li>
-                    
-                    <li><a href="badges.html" style="font-size: 20px;color: black;">SCHEDULE A MEETING</a></li>
-                  </ul>
-                </div>
+                    class="Group-548">
+              
+                <!-- Links -->
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a href="sass.html" style="font-size: 20px;color: black;" class="active" id="join">JOIN A MEETING</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" style="font-size: 20px;color: black;" id="host">HOSTING A MEETING</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" style="font-size: 20px;color: black;" id="schedule">SCHEDULE A MEETING</a>
+                    </li>
+                    <li class="nav-item"><a href="#" style="font-size: 10px;color: black;" style="color: blueviolet;"id="signinpopup" >SIGN IN</a></li>
+                  <!-- Dropdown -->
+                  <li class="nav-item dropdown">
+                  <a href="" class="nav-link dropdown-toggle" style="font-size: 10px;color: black;" style="color: blueviolet;"id="navbardrop" data-toggle="dropdown" ></a>
+
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#" id="startmeeting">Start meeting</a>
+                      <a class="dropdown-item" href="#" id="signout">Sign out</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                  </li>
+                  <li class="nav-item"><button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="signup" onclick="buttonsignin()">SIGN UP</button></li>
+                  &nbsp;   &nbsp;
+                </ul>
               </nav>
+              
+
+
               <div class="hero-image">
             </div>
+            
 
 
 
@@ -95,7 +130,7 @@
                 </div>
                
         
-                <div class="col-md-3 offset-md-8" style=" position: absolute;;
+                <div class="col-md-3 offset-md-8" id="signview" style=" position: absolute;;
                 top:-30%">
                   <div class="card form-holder">
           <div class="card-body">
@@ -115,27 +150,30 @@
 
 
                     <div class="row col-md-12">
+                      <div class="checkbox col-sm-6 ">
+                        <label><input type="checkbox" name="remember"> Remember me</label>
+                      </div>
 
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                            <input type="checkbox" value="lsRememberMe"  style="color: #000; " id="rememberMe"/> <label for="rememberMe">Remember me</label>
 
-                        </div>
+                        </div> -->
                         <label style="float:right;font-size:12px; cursor:pointer;" onClick="">Forgot Password?</label>
                       </div>
                     
                   
                     <div class="wrapper">
-                        <button style="width: 250px;height: 50px;"class="btn btn-primary" id="signin1"  >Sign in</button>
+                        <button style="width: 250px;height: 50px;background-color: blueviolet;"class="btn btn-primary" id="signin1"  >Sign in</button>
                     </div> 
                     <br/>
                     <div class="wrapper">
 
                     <h4 style="align-self: center;" onclick="signup()">SIGN UP</h4>
                     </div>
-                    <div class="separator">or</div>
+                    <!-- <div class="separator">or</div>
                     <div class="wrapper">
                         <button style="width: 250px;height: 50px;background-color: white;color: black;" class="btn">JOIN A MEETING</button>
-                    </div> 
+                    </div>  -->
                   </div>
                 </form>
                     </div>
@@ -219,13 +257,204 @@
 
 
               
+
+
+
+              
      
       
 <!-- </div> -->
 
 
 <script>
-  // var socket =io()
+   var socket = io()
+  socket.on('cron', function(data) {
+    console.log(data,"crom")
+      
+alert("hiiii")            });
+  var link;
+  sessionStorage.removeItem("link")
+  // alert(sessionStorage.getItem("link"))
+
+      document.querySelector('#signview').style.display ="none"
+      document.getElementById('navbardrop').style.display ="none"
+
+      //======================================start meeting==========================================//
+      document.getElementById("startmeeting").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+
+        obj={
+          meetingID:sessionStorage.getItem("meetingid")
+        }
+        $.ajax({
+                type: "post",
+                url:"http://localhost:3000/meetingstarted",
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  if(result.result =="success"){
+                    window.location =sessionStorage.getItem("url")
+                  }
+                  else{
+                    Swal.fire("Something Went Wrong")
+                  }
+                }
+
+
+      })
+    })
+
+
+      //================================join a meeting========================================//
+      document.getElementById("join").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        window.location ="./joinmeeting.html"
+      })
+
+      document.getElementById("signinpopup").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+    document.querySelector('#signview').style.display ="block"
+    return false;
+  })
+  //===================================sign out========================================================//
+  document.getElementById("signout").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+
+        Swal.fire({
+ 
+ text: "Are sure want to sign out",
+ 
+
+ icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes'
+}).then((result) => {
+  if(result.value){
+  window.location = "./index.html"
+
+  }
+  console.log(result,"result====>>>")
+
+})        
+  })
+  //==========================================sign up=======================================================================//
+  function buttonsignin(){
+    window.location = "./singup.html";
+  }
+  //================================================host a meeting click==========================================//
+  document.getElementById("host").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        
+    var usernamedisplay = document.getElementById("navbardrop")
+    if(window.getComputedStyle(usernamedisplay).display === "block"){
+      sessionStorage.removeItem("link")
+
+
+
+
+      var obj ={
+  email: sessionStorage.getItem("email"),
+  password : sessionStorage.getItem("password"),
+
+}
+$.ajax({
+                type: "post",
+                url:"http://localhost:3000/signin",
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  console.log(result,"dfdsffffffffffffff") 
+                    var firstname = result.result.firstname;
+                    var roomName = result.result.groupname
+                    var id = result.result._id      
+                    sessionStorage.setItem("username",firstname)
+
+
+                       roomLink = `${location.origin}?room=${roomName.trim().replace(' ', '_')}_${generateRandomString()}/?${id}`;
+                       console.log(roomLink,"roomlink+++++++")
+                      // if(sessionStorage.getItem("link") == "host"){
+                       document.querySelector('#room-created').innerHTML = `Room successfully created. Click <a href='${roomLink}' onclick="mytest( '${roomLink}','${id}')">here</a> to enter room. 
+                Share the room link <a href=""> ${roomLink}</a> with your partners.`;
+                       $('#myModal').modal('show');
+    if (!($('.modal.in').length)) {
+    $('.modal-dialog').css({
+      // top: 0,
+      // left: 0
+    });
+  }
+               
+                 
+                  
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    
+                }
+            })
+    }
+    else{
+    Swal.fire({
+ 
+ text: "Kindly signin",
+ 
+
+ confirmButtonColor: '#3085d6',
+ 
+ confirmButtonText: 'OK'
+}).then((result) => {
+  link = "host"
+        sessionStorage.setItem("link",link)
+    alert("sdfdfdf")
+  document.querySelector('#signview').style.display ="block"
+
+
+})
+    
+    }
+  
+
+
+  })
+
+  //==============================================schedule==============================================//
+  document.getElementById("schedule").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        var usernamedisplay = document.getElementById("navbardrop")
+    if(window.getComputedStyle(usernamedisplay).display === "block"){
+      window.location ="./schedule.html"
+    }
+    else{
+        link = "schedule"
+        sessionStorage.setItem("link",link)
+    alert("sdfdfdf")
+    Swal.fire({
+ 
+ text: "Kindly signin",
+ 
+
+ confirmButtonColor: '#3085d6',
+ 
+ confirmButtonText: 'OK'
+}).then((result) => {
+  document.querySelector('#signview').style.display ="block"
+
+
+})
+    }
+
+  })
+  
+
 //===========================================================================//
 function getQString(url='', keyToReturn=''){
         url = url ? url : location.href;
@@ -263,10 +492,17 @@ function getQString(url='', keyToReturn=''){
   function signup(){
     window.location = "./singup.html";
   }
-  
+ 
+
+
+ //======================================sign in====================================================================// 
   $('#signin1').click(function(e){
     e.preventDefault();
+    document.getElementById("signup").disabled =true
   console.log("entering++++")
+
+  sessionStorage.setItem("email",$("#email").val())
+  sessionStorage.setItem("password", $("#password").val())
 
 var obj ={
   email: $("#email").val(),
@@ -287,35 +523,42 @@ $.ajax({
 
                   if(result.result=="Incorrect user name or password"){
                       console.log("coming inside")
+                      Swal.fire(result.result)
                     
-                      Swal.fire({
- 
- text: result.result,
- 
 
- confirmButtonColor: '#3085d6',
- 
- confirmButtonText: 'OK'
-}).then((result) => {
- if (result.value) {
- window.location.href ="/index.html"
- }
-})
                   }
                   else{
+
+                  
                     var wholeresponse = result.result;
                     console.log(wholeresponse,"wholeresponse=====>>>>")
                     var firstname = wholeresponse.firstname;
+                    var lastname = wholeresponse.lastname;
                     var roomName = wholeresponse.groupname;
                     var id = wholeresponse._id;
+                    let meetingid = wholeresponse.meetingID;
+                    let url = wholeresponse.url;
+
+                    document.getElementById('navbardrop').innerHTML=firstname +" "+ lastname;
+                    document.getElementById('navbardrop').style.display ="block"
+                    document.querySelector('#signinpopup').style.display ="none"
+
+                    document.getElementById("signview").style.display ="none"
+
+
                     
                     // window.location.href ="/userpage.html"
                     sessionStorage.setItem("username",firstname)
+                    sessionStorage.setItem("meetingid",meetingid)
+                    sessionStorage.setItem("url",url)
+
+
 
                       // Swal.fire(result.result)
                        roomLink = `${location.origin}?room=${roomName.trim().replace(' ', '_')}_${generateRandomString()}/?${id}`;
                        console.log(roomLink,"roomlink+++++++")
                       //  socket.emit("roomlink",roomLink)
+                      if(sessionStorage.getItem("link") == "host"){
                        document.querySelector('#room-created').innerHTML = `Room successfully created. Click <a href='${roomLink}' onclick="mytest( '${roomLink}','${id}')">here</a> to enter room. 
                 Share the room link <a href=""> ${roomLink}</a> with your partners.`;
                        $('#myModal').modal('show');
@@ -325,10 +568,22 @@ $.ajax({
       // left: 0
     });
   }
-  // $('#myModal').modal({
-  //   backdrop: false,
-  //   show: true
-  // });
+  sessionStorage.removeItem("link")
+
+
+}
+
+else if(sessionStorage.getItem("link")=="schedule"){
+  sessionStorage.removeItem("link")
+
+  window.location ="./schedule.html"
+}
+
+
+
+
+
+  
 
                   }
                  
@@ -398,6 +653,11 @@ $.ajax({
   height: 25px;
   align-self: center;
 }
+
+
+
+
+
 
   </style>  
       

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='assets/css/app.css' type="text/css">
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>signup</title>
+</head>
+<body>
+    <div class="">
+       
+       
+           
+        <nav>
+            <div class="nav-wrapper" style="background-color:white;">
+                <img src="./assets/images/Group 548@3x.png"
+                srcset="img/group-548@2x.png 2x,
+                        img/group-548@3x.png 3x"
+                class="Group-548"> 
+                <!-- <a href="#" class="brand-logo">Logo</a> -->
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <li><a href="sass.html" style="font-size: 20px;color: black;" class="active">JOIN A MEETING</a></li>
+                <li><a href="badges.html" style="font-size: 20px;color: black;">HOSTING A MEETING</a></li>
+                
+                <li><a href="badges.html" style="font-size: 20px;color: black;">SCHEDULE A MEETING</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="hero-image">
+        </div>
+        <br/>
+        <br/>
+        <!------------------------------form-->
+        <!-- <div class="container"> -->
+                   
+            <!-- <form  id="contactForm1" method="POST"> -->
+                <div class="row">
+                    <div class="col-md-1" >
+                        <img src="./assets/images/001-video-call-1.png" style="align-content:left">
+
+                    </div>
+                    <div class="col-md-10">
+                        <h2 class="wrapper">JOIN A MEETING</h2><br/><br/>
+
+                    </div>
+                    <div class="col-md-1">
+                        <img src="./assets/images/002-video-call.png" style="align-content:left">
+
+                    </div>
+
+            </div>
+              <!-- <div class="container-fluid" id='username-set' > -->
+                <!-- <div class="row">
+                    <div class="col-12 h4 mt-5 text-center">JOIN INTO THE CHAT</div>
+                </div> -->
+                
+                <!-- <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <span class="form-text small text-danger" id='err-msg-username'></span>
+                    </div> -->
+                     <div class="row col-md-12">
+                        <div class="col-md-5">
+                            <img src="./assets/images/Page-1.png" style="align-content:left">
+    
+                        </div>
+                    <div class=" col-md-2">
+                            <input type="text" id="username2" class="form-control rounded-0" style="text-align: center;" placeholder="Meeting ID">
+                    </div>
+                    <div class="col-md-5">
+                        <img src="./assets/images/cho-1.png" >
+
+                    </div>
+                </div>
+            
+                <div class="wrapper">
+                    <button style="width: 250px;height: 50px;background-color: blueviolet;"class="btn btn-primary" id="joinameeting"  >Sign in</button>
+                </div> 
+               
+                <!-- <div style="align-content: flex-start;">
+                    <img src="./assets/images/cho-1.png" >
+
+                </div>
+                
+                
+                    <div style="align-content: flex-end;">
+                    <img src="./assets/images/cho-1.png" >
+              
+
+                </div> -->
+            </div>
+              
+            
+       
+
+         
+
+  
+    
+    
+</body>
+
+<script>
+     
+
+ document.getElementById("joinameeting").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        var meetingID = $("#username2").val();
+        console.log(meetingID,"meetingid")
+
+
+
+
+    var obj = { 
+        
+            meetingID:meetingID
+
+         
+          }
+          console.log(obj,"request")
+
+    $.ajax({
+                type: "post",
+                url:"http://localhost:3000/joinmeeting",
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  console.log(result,"dfdsffffffffffffff")
+                  if(result.result == "Incorrect meetingID"){
+                      Swal.fire(result.result)
+                  }
+                  else{
+                  var url = result.result.url
+
+                  window.location =url
+                  }
+
+                                    
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    
+                }
+            })
+
+})
+
+        
+
+
+
+
+
+</script>
+
+
+
+
+</html>
+<style>
+/* input[type="text"]::-webkit-input-placeholder  {
+  -webkit-transition: opacity 0.3s linear; 
+  color: gray;
+  font-size: 15px;
+} */
+
+input[type="email"]:focus::-webkit-input-placeholder  {
+  opacity: 0;
+}
+
+
+
+
+</style>

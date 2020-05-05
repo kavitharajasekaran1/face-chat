@@ -9,9 +9,11 @@ const person_details = new Schema({
     password: String,
     groupname: String,
     url:String,
+    meetingID:Number,
     signin:{type:String,default:false},
     created: {type: Date, default: Date.now},
-    updated: {type: Date, default: Date.now}
+    updated: {type: Date, default: Date.now},
+    
 });
 const PersonDetails = mongoose.model('personDetails', person_details);
 

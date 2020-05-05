@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel='stylesheet' href='assets/css/app.css' type="text/css">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>signup</title>
+</head>
+<body>
+    <div class="">
+       
+       
+           
+      <nav class="navbar navbar-expand-sm navbar-dark bg-white d-flex justify-content-between">
+        <!-- Brand -->
+        <!-- <a class="navbar-brand" href="#">Logo</a> -->
+        <img src="./assets/images/Group 548@3x.png"
+            srcset="img/group-548@2x.png 2x,
+                    img/group-548@3x.png 3x"
+            class="Group-548">
+      
+        <!-- Links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="sass.html" style="font-size: 20px;color: black;" class="active" id="join">JOIN A MEETING</a>
+          </li>
+          &nbsp;    &nbsp;
+          <li class="nav-item">
+            <a href="#" style="font-size: 20px;color: black;" id="host">HOSTING A MEETING</a>
+            </li>
+            &nbsp;    &nbsp;
+            <li class="nav-item">
+              <a href="" style="font-size: 20px;color: black;" id="schedule">SCHEDULE A MEETING</a>
+            </li>
+            &nbsp;    &nbsp;
+            <li class="nav-item"><a href="#" style="font-size: 10px;color: black;" style="color: blueviolet;"id="signinpopup" >SIGN IN</a></li>
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+          <a href="" class="nav-link dropdown-toggle" style="font-size: 10px;color: black;" style="color: blueviolet;"id="navbardrop" data-toggle="dropdown" ></a>
+
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" id="startmeeting">Start meeting</a>
+              <a class="dropdown-item" href="#" id="signout">Sign out</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+          </li>
+          <li class="nav-item"><button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="signup" onclick="buttonsignin()">SIGN UP</button></li>
+          &nbsp;   &nbsp;
+        </ul>
+      </nav>
+      
+
+          <div class="hero-image">
+        </div>
+        <br/>
+        <!------------------------------form-->
+        <div class="wrapper">
+          <h2 class="wrapper">SIGN UP</h2><br/><br/>
+        </div>
+        <div class="container">
+          <div class="row">
+              <div class="form-group name1 col-md-6">
+                  <label for="exampleInputEmail1" class="formText">Topic</label>
+                  <input type="text" class="form-control"  id="topic" aria-describedby="emailHelp" name="muverName">
+              </div>
+      
+              <div class="form-group name2 col-md-6">
+                  <label for="exampleInputEmail1## Heading ##" class="formText">Description</label>
+                  <input type="text" class="form-control" id="desc" aria-describedby="emailHelp" name="muverPhone">
+              </div>
+          </div>
+          <div class="row">
+            <div class="form-group name1 col-md-6">
+                <label for="exampleInputEmail1" class="formText">When</label>
+                <input type="date" class="form-control" id="time" aria-describedby="emailHelp" name="muverName">
+              </div>
+    
+            <div class="form-group name2 col-md-6">
+                <label for="exampleInputEmail1## Heading ##" class="formText">Time</label>
+                <input type="time" class="form-control" id="duration" aria-describedby="emailHelp" name="muverPhone">
+            </div>
+        </div>
+        <div class="row">
+          <div class="form-group name1 col-md-6">
+              <label for="exampleInputEmail1" class="formText">MeetingID</label>
+              <input type="text" class="form-control" id="meetingid" aria-describedby="emailHelp" name="muverName">
+            </div>
+  
+          <div class="form-group name2 col-md-6">
+              <label for="exampleInputEmail1## Heading ##" class="formText">Meeting URL</label>
+              <input type="text" class="form-control" id="url" aria-describedby="emailHelp" name="muverPhone">
+          </div>
+      </div>
+      
+
+      </div>
+
+      <div class="row"> 
+       <button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="submit" >SUBMIT</button></li>
+        &nbsp; &nbsp;    &nbsp; &nbsp;   &nbsp; &nbsp;
+        <button type="button" >Cancel</button> 
+    </div>
+      
+
+    </div>
+    
+    
+</body>
+
+<script>
+  document.getElementById("meetingid").defaultValue = sessionStorage.getItem("meetingid");
+  document.getElementById("url").defaultValue =sessionStorage.getItem("url");
+
+
+//===============================schedule=============================================================//
+document.getElementById("submit").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+
+        var obj ={
+          topic : $("#topic").val(),
+          desc : $("#desc").val(),
+          date : $("#time").val(),
+        time :$("#duration").val(),
+          meetingid :$("#meetingid").val(),
+          url : $("#url").val(),
+          email : sessionStorage.getItem("email"),
+          name:sessionStorage.getItem("username")
+
+              }
+
+              console.log(obj,"schedule object=======>>>>")
+
+              $.ajax({
+                type: "post",
+                url:"http://localhost:3000/schedule",
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  console.log(result,"dfdsffffffffffffff")
+                }
+                
+              
+
+                })
+              
+
+
+
+})
+      var frm = $('#contactForm1');
+
+frm.submit(function (e) {
+
+    e.preventDefault();
+
+    console.log("kkkkkkkkkkkk",$("#email").val())
+
+    var obj = { 
+        
+            firstname : $("#first").val(),
+            password : $("#password").val(),
+            lastname: $("#last").val(),
+            groupname: $("#company").val(),
+            phoneno: $("#phone").val(),
+            email: $("#email").val(),
+
+         
+          }
+          console.log(obj,"request")
+
+    $.ajax({
+                type: "post",
+                url:"http://localhost:3000/signup",
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  console.log(result,"dfdsffffffffffffff")
+
+                  if(result.result=="All the details are saved successfully"){
+                      console.log("coming inside")
+                    
+                      Swal.fire({
+ 
+ text: result.result,
+ 
+
+ confirmButtonColor: '#3085d6',
+ 
+ confirmButtonText: 'OK'
+}).then((result) => {
+ if (result.value) {
+ window.location.href ="/index.html"
+ }
+})
+                  }
+                  else{
+                      Swal.fire("Something Went Wrong")
+                  }
+                 
+                  
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    
+                }
+            })
+
+})
+
+        
+
+
+
+
+
+</script>
+
+
+
+
+</html>
+<style>
+/* input[type="text"]::-webkit-input-placeholder  {
+  -webkit-transition: opacity 0.3s linear; 
+  color: gray;
+  font-size: 15px;
+} */
+
+input[type=text]{
+    width:70%;
+    border:2px solid #aaa;
+    border-radius:9px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    width:70px
+    
+}
+.form-control{
+  width:70%;
+    border:2px solid #aaa;
+    border-radius:9px;
+}
+.wrapper1 {
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+input[type="time"]::-webkit-time-picker-indicator{
+  background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    width:70px
+
+}
+
+
+</style>

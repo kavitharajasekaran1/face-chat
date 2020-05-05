@@ -6,6 +6,7 @@ window.addEventListener('load', ()=>{
     const room1 = sessionStorage.getItem("room")
     const username = sessionStorage.getItem('username');
     var click =""
+    emiting()
     $('#enter-room').click(function(e){
         e.preventDefault();
         document.querySelector('#toview').attributes.removeNamedItem('hidden');
@@ -26,6 +27,8 @@ window.addEventListener('load', ()=>{
     })
     
     console.log(click,"==============={{{{{{")
+
+    // alert(sessionStorage.getItem("meetingid"))
     // alert($('#enter-room').data('clicked'))
     
     // if(room){
@@ -40,7 +43,8 @@ window.addEventListener('load', ()=>{
     console.log($("#username").val(),sessionStorage.getItem("username1"),"OOOOOOOOOOOOOOO")
      console.log(room1,"room1======>>>>")
      function emiting(){
-    if(room1 !=null || sessionStorage.getItem("username1")){
+         alert("notindie")
+    if(room1 !=null || sessionStorage.getItem("username1") || sessionStorage.getItem("meetingid") !=null){
         
 
         
@@ -169,106 +173,7 @@ window.addEventListener('load', ()=>{
          })
 
 
-        function init1(createOffer,socketId){
-            if(document.getElementById('start').disabled == false && createOffer == true){
-
-                h.getUserMedia1().then((stream)=>{
-                    console.log("GGGGGGGGGGGGGGGGG",stream)
-                    //save my stream
-                    myStream = stream;
-    
-                    stream.getTracks().forEach((track)=>{
-                        pc[partnerName].addTrack(track, stream);//should trigger negotiationneeded event
-                    });
-    
-                    document.getElementById('video').srcObject = stream;
-                    document.getElementById(`${partnerName}-video`).srcObject = stream;                    // document.getElementById('local').srcObject = stream;
-    
-                }).catch((e)=>{
-                    console.error(`stream error: ${e}`);
-                });
-    
-                if(createOffer){
-                    pc[partnerName].onnegotiationneeded = async ()=>{
-                        let offer = await pc[partnerName].createOffer();
-                        
-                        await pc[partnerName].setLocalDescription(offer);
-    
-                        socket.emit('sdp', {description:pc[partnerName].localDescription, to:partnerName, sender:socketId,value :"clicked"});
-                    };
-                }
-    
-    
-    
-                //send ice candidate to partnerNames
-                pc[partnerName].onicecandidate = ({candidate})=>{
-                    socket.emit('ice candidates', {candidate: candidate, to:partnerName, sender:socketId});
-                };
-    
-    
-    
-                //add
-                pc[partnerName].ontrack = (e)=>{
-                    let str = e.streams[0];
-                    if(document.getElementById(`${partnerName}-video`)){
-                        document.getElementById(`${partnerName}-video`).srcObject = str;
-                    }
-    
-                    else{
-                        //video elem
-                        let newVid = document.createElement('video');
-                        newVid.id = `${partnerName}-video`;            
-                        newVid.srcObject = stream;
-                        
-                        newVid.autoplay = true;
-                        newVid.className = 'remote-video';
-                        
-                        //create a new div for card
-                        // let cardDiv = document.createElement('div');
-                        // cardDiv.className = 'card mb-3';
-                        // cardDiv.appendChild(newVid);
-                     
-                        
-                        // //create a new div for everything
-                        let div = document.createElement('div');
-                        div.className = 'col-sm-12 col-md-6';
-                        div.id = partnerName;
-                        div.appendChild(newVid);
-                        
-                        //put div in videos elem
-                        document.getElementById('videos').appendChild(newVid);
-                    }
-                };
-    
-    
-    
-                pc[partnerName].onconnectionstatechange = (d)=>{
-                    switch(pc[partnerName].iceConnectionState){
-                        case 'disconnected':
-                        case 'failed':
-                            h.closeVideo(partnerName);
-                            break;
-                            
-                        case 'closed':
-                            h.closeVideo(partnerName);
-                            break;
-                    }
-                };
-    
-    
-    
-                pc[partnerName].onsignalingstatechange = (d)=>{
-                    switch(pc[partnerName].signalingState){
-                        case 'closed':
-                            console.log("Signalling state is 'closed'");
-                            h.closeVideo(partnerName);
-                            break;
-                    }
-                };
-    
-            }
-        }
-
+        
 
 
         function init(createOffer, partnerName,value){

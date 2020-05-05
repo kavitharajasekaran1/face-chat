@@ -115,26 +115,30 @@
 
               </div>
             </form>
+            
           </div>
+
+         
+
     </div>
-
-
-
-
-
-
-
+    
     
 </body>
 
 <script>
       var frm = $('#contactForm1');
+      function generateRandomString(){
+        return Math.random().toString(36).slice(2).substring(0, 15);
+    }
 
 frm.submit(function (e) {
 
     e.preventDefault();
 
     console.log("kkkkkkkkkkkk",$("#email").val())
+    let roomName = $("#company").val()
+    roomLink = `${location.origin}?room=${roomName.trim().replace(' ', '_')}_${generateRandomString()}`;
+
 
     var obj = { 
         
@@ -144,6 +148,7 @@ frm.submit(function (e) {
             groupname: $("#company").val(),
             phoneno: $("#phone").val(),
             email: $("#email").val(),
+            url : roomLink
 
          
           }

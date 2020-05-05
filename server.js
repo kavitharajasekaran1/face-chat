@@ -4,10 +4,13 @@ let server = require('http').Server(app);
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+const cron = require("node-cron");
+var schedule = require('node-schedule');
+
+
 
 let io = require('socket.io')(server);
 const cors = require('cors');
-// var io = require('socket.io');
 const db = require('./db');
 
 const router = express.Router();
@@ -22,7 +25,9 @@ var port = process.env.PORT || 3000;
 
 app.use('/assets', express.static(path.join(__dirname, '/src/assets')));
 
-
+app.get('/joinmeeting.html', function (req, res) {
+  res.sendFile(path.join(__dirname+'/src/joinmeeting.html'));
+})
 
 app.get('/singup.html', function (req, res) {
     res.sendFile(path.join(__dirname+'/src/singup.html'));
@@ -30,9 +35,9 @@ app.get('/singup.html', function (req, res) {
   app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname+'/src/userpage.html'));
   })
-  // app.get('/userpage.html', function (req, res) {
-  //   res.sendFile(path.join(__dirname+'/src/userpage.html'));
-  // })
+  app.get('/schedule.html', function (req, res) {
+    res.sendFile(path.join(__dirname+'/src/schedule.html'));
+  })
 
 
 app.get('/index.html', function(req,res) {
@@ -49,6 +54,17 @@ var $ipsConnected = [];
 
 
 io.on('connection', function (socket) {
+
+  
+  // cron.schedule("* * * * *", function() {
+
+
+  //       socket.emit("cron","meeting started")
+
+    
+  //   console.log("running a task every minute");
+  
+//})
 
 
     let count = Object.keys(io.sockets.sockets).length;

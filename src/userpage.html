@@ -265,7 +265,7 @@
         
       
       </div>
-      <button id="downloading" onclick="recording1()" >Download</button>
+      <!-- <button id="downloading" onclick="recording1()" >Download</button> -->
 
       <div class=" text-center  m-2">
         <img src="assets/images/005-microphone-1@2x.png" style="width: 50px;" hspace="40">
@@ -343,14 +343,21 @@ $('#end-meeting').click(function(e){
   var url_final = url1[2]
   console.log((url))
   var singin_status 
+  if(url_final.length == 12){
+    var obj = {
+      meetingid : url_final
+    }
+  }
+  else{
   var obj ={
     id :url_final
   }
+}
   // execution()
  
   $.ajax({
                 type: "post", 
-                url:"http://localhost:3000/signout",
+                url:"http://localhost:3000/endmeeting",
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 success: function(response) {
@@ -394,12 +401,18 @@ win.close();
 window.addEventListener('load', ()=>{
   var room = sessionStorage.getItem("room")
   // console.log(singin_status,"signin status")
+
+  // if((sessionStorage.getItem("meetingid") !=null)){
+   
+  // window.location ="/"
+
+  // }
   
 
 
 
   var checking =  setInterval(function(){ execution(); }, 3000);
-  if(room !=null || room == ""){
+  if(room !=null || room == "" ){
     console.log("entering",sessionStorage.getItem("room"))
     // clearInterval(checking);
     clearTimeout(checking);
@@ -425,9 +438,16 @@ window.addEventListener('load', ()=>{
   var url_final = url1[2]
   console.log((url))
   var singin_status 
+  if(url_final.length == 12){
+    var obj = {
+      meetingid : url_final
+    }
+  }
+  else{
   var obj ={
     url :url_final
   }
+}
   // execution()
  
   $.ajax({
@@ -458,7 +478,7 @@ window.addEventListener('load', ()=>{
     console.log("wait ")
     document.querySelector('#wait').attributes.removeNamedItem('hidden');
   }
-  else if( singin_status == "true" && room == null){
+  else if( (singin_status == "true" && room == null) ){
     console.log("wait ")
     clearInterval(checking);
 
