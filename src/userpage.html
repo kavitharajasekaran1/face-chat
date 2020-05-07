@@ -293,6 +293,7 @@
   
 </body>
 <script>
+  var meetingid = sessionStorage.getItem("meetingid")
  
   console.log($('#toview').is(':visible'),"+++++++++++++++++++++++++")
   $('#counter').click(function(e){
@@ -412,7 +413,7 @@ window.addEventListener('load', ()=>{
 
 
   var checking =  setInterval(function(){ execution(); }, 3000);
-  if(room !=null || room == "" ){
+  if(room !=null || room == "" || meetingid !=null ){
     console.log("entering",sessionStorage.getItem("room"))
     // clearInterval(checking);
     clearTimeout(checking);
@@ -602,7 +603,7 @@ const mediaSource = new MediaSource();
   const recordedVideo = document.querySelector('video#recorded');
   const recordButton = document.getElementById('startButton');
  recordButton.addEventListener("click", function() {
-    alert("hiii")
+    // alert("hiii")
     console.log($('#startButton').is(':visible'))
     if($('#startButton').is(':visible')){
         document.getElementById("startButton").style.display = "none"
@@ -611,7 +612,7 @@ const mediaSource = new MediaSource();
       startRecording();
       
     } else {
-      alert("kkkkk")
+      // alert("kkkkk")
       stopRecording();
       // recordButton.textContent = 'Start Recording';
       // playButton.disabled = false;
@@ -619,7 +620,7 @@ const mediaSource = new MediaSource();
     }
   });
   document.getElementById("download1").addEventListener("click",function(){
-    alert("kkkkk")
+    // alert("kkkkk")
       stopRecording();
 
   })
@@ -638,7 +639,7 @@ const mediaSource = new MediaSource();
   // const downloadButton1 = document.getElementById("downloading");
   // downloadButton1.addEventListener('click', function() {
     function recording1(){
-    alert("jjjjj")
+    // alert("jjjjj")
     const blob = new Blob(recordedBlobs, {type: 'video/webm'});
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');

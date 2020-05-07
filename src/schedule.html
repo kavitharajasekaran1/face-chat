@@ -9,8 +9,7 @@
 
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <link rel='stylesheet' href='assets/css/app.css' type="text/css">
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -104,16 +103,54 @@
               <input type="text" class="form-control" id="url" aria-describedby="emailHelp" name="muverPhone">
           </div>
       </div>
+      <div class="row">
+        <div class="form-group name1 col-md-6">
+          <label for="exampleInputEmail1" class="formText">Invite People</label>
+
+        <input type="text" id="emailid" class="form-control" placeholder="Enter Email ID"/>
+<a id="btnCreate2">ADD</a><br>
+<ul id="list2">
+</ul>
+</div>
+      </div>
+     
       
 
       </div>
 
-      <div class="row"> 
+      <div class="text-center" style="padding: 3%;"> 
        <button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="submit" >SUBMIT</button></li>
         &nbsp; &nbsp;    &nbsp; &nbsp;   &nbsp; &nbsp;
         <button type="button" >Cancel</button> 
     </div>
+    <div style="margin-bottom: -40px;">
+      <img src="assets/images/Mask Group 1.png" class="responsive" style=" width:100%">
+     </div>
       
+    <footer class="footer bg-dark col-md-12" style="padding:.1%;backface-visibility:hidden">
+      <!-- <div  class="" style="margin-top: -110px;"> -->
+      
+
+      <!-- </div> -->
+      
+      <div class="col-md-12 mt-5">
+        <div class="row">
+          <div class="float-left ml-4">
+            <img src="assets/images/Group 4.png">
+          </div>
+          <div class="col-sm-1">
+            
+          </div>
+          <div class="col-lg">
+            <div class="row"><p class="Privacy">Privacy</p> <div class="v1"></div> <p class="Privacy">Terms</p> <div class="v1"></div> <p class="Privacy">About</p> <div class="v1"></div> <p class="Privacy">FaceChat</p> <div class="v1"></div> <p class="Privacy">Help</p>  <div class="v1"></div>  <p class="Privacy">FAQ's</p></div>
+          </div>
+          <div class="float-right">
+            <img src="assets/images/sort.png">
+          </div>
+          
+        </div>
+      </div>
+    </footer>
 
     </div>
     
@@ -124,10 +161,31 @@
   document.getElementById("meetingid").defaultValue = sessionStorage.getItem("meetingid");
   document.getElementById("url").defaultValue =sessionStorage.getItem("url");
 
+  $('#btnCreate2').on('click',function(){
+    
+    var text=$("#emailid").val()
+    if(text =="" || !text.includes("@")){
+      Swal.fire("Kindly Enter a valid Email ID")
+    }
+    else{
+    console.log(text,"text")
+      $('#list2').append('<li>'+text+'</li>');
+    }
+  })
+
 
 //===============================schedule=============================================================//
 document.getElementById("submit").addEventListener('click', (ev)=>{
         ev.preventDefault();
+
+        var ar = [];
+        var emails =[]
+ar = document.getElementById("list2").getElementsByTagName("li");
+for(i = 0; i < ar.length; i++){
+  emails.push($(ar[i]).text())
+   //ar[i].anything results in console errors.
+}
+alert(emails)
 
         var obj ={
           topic : $("#topic").val(),
@@ -137,7 +195,8 @@ document.getElementById("submit").addEventListener('click', (ev)=>{
           meetingid :$("#meetingid").val(),
           url : $("#url").val(),
           email : sessionStorage.getItem("email"),
-          name:sessionStorage.getItem("username")
+          name:sessionStorage.getItem("username"),
+          attendeesemail : emails
 
               }
 
@@ -275,6 +334,23 @@ input[type=text]{
     border:2px solid #aaa;
     border-radius:9px;
 }
+.Privacy {
+    height: 22px;
+    align-content: center;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 10px;
+    align-self: center;
+}
 .wrapper1 {
   text-align: center;
   display: inline-block;
@@ -289,6 +365,17 @@ input[type="time"]::-webkit-time-picker-indicator{
     cursor: pointer;
     width:70px
 
+}
+#btnCreate,#btnCreate2{
+  background-color:#ff0044;
+  color:#fff;
+  padding: 5px 10px;
+  cursor:pointer;
+  border:1px solid;
+}
+#btnCreate:hover,#btnCreate2:hover{
+  color:#ff0044;
+  background-color:#fff;
 }
 
 

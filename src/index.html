@@ -16,7 +16,7 @@
     <script type="module" src='assets/js/events.js'></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src='/socket.io/socket.io.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
 
       
 
@@ -41,44 +41,44 @@
        
        
            
-           
+      <nav class="navbar navbar-expand-sm navbar-dark bg-white d-flex justify-content-between">
+        <!-- Brand -->
+        <!-- <a class="navbar-brand" href="#">Logo</a> -->
+        <img src="./assets/images/Group 548@3x.png"
+            srcset="img/group-548@2x.png 2x,
+                    img/group-548@3x.png 3x"
+            class="Group-548">
+      
+        <!-- Links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="sass.html" style="font-size: 20px;color: black;" class="active" id="join">JOIN A MEETING</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" style="font-size: 20px;color: black;" id="host">HOSTING A MEETING</a>
+            </li>
+            <li class="nav-item">
+              <a href="" style="font-size: 20px;color: black;" id="schedule">SCHEDULE A MEETING</a>
+            </li>
+            <li class="nav-item"><a href="#" style="font-size: 10px;color: black;" style="color: blueviolet;"id="signinpopup" >SIGN IN</a></li>
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+          <a href="" class="nav-link dropdown-toggle" style="font-size: 10px;color: black;" style="color: blueviolet;"id="navbardrop" data-toggle="dropdown" ></a>
+    
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" id="startmeeting">Start meeting</a>
+              <a class="dropdown-item" href="#" id="signout">Sign out</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+            </div>
+          </li>
+          <li class="nav-item"><button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="signup" onclick="buttonsignin()">SIGN UP</button></li>
+          &nbsp;   &nbsp;
+        </ul>
+      </nav>
 
-              <nav class="navbar navbar-expand-sm navbar-dark bg-white d-flex justify-content-between">
-                <!-- Brand -->
-                <!-- <a class="navbar-brand" href="#">Logo</a> -->
-                <img src="./assets/images/Group 548@3x.png"
-                    srcset="img/group-548@2x.png 2x,
-                            img/group-548@3x.png 3x"
-                    class="Group-548">
-              
-                <!-- Links -->
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a href="sass.html" style="font-size: 20px;color: black;" class="active" id="join">JOIN A MEETING</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" style="font-size: 20px;color: black;" id="host">HOSTING A MEETING</a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="" style="font-size: 20px;color: black;" id="schedule">SCHEDULE A MEETING</a>
-                    </li>
-                    <li class="nav-item"><a href="#" style="font-size: 10px;color: black;" style="color: blueviolet;"id="signinpopup" >SIGN IN</a></li>
-                  <!-- Dropdown -->
-                  <li class="nav-item dropdown">
-                  <a href="" class="nav-link dropdown-toggle" style="font-size: 10px;color: black;" style="color: blueviolet;"id="navbardrop" data-toggle="dropdown" ></a>
 
-                    </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#" id="startmeeting">Start meeting</a>
-                      <a class="dropdown-item" href="#" id="signout">Sign out</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                    </div>
-                  </li>
-                  <li class="nav-item"><button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="signup" onclick="buttonsignin()">SIGN UP</button></li>
-                  &nbsp;   &nbsp;
-                </ul>
-              </nav>
-              
+             
 
 
               <div class="hero-image">
@@ -97,7 +97,7 @@
 
             <div >
             
-            <div class="row col-md-12 ">
+            <div class="row col-md-12 " style="margin-bottom: -70px;">
               
               <div  class="my-5 ml-5"><p class="Be-together-in-the-moment" style="top:20px"><b>BE TOGETHER  IN THE MOMENT</b> </p>
                 <p class="ml-2" style="font-size: 20px;">Simple, high quality video calls on Android phones, iPhones, tablets,<br/> 
@@ -181,22 +181,22 @@
                  
 
                 </div>
-                <div  class="" style="margin-top: -190px;">
-                  <img src="assets/images/wave@3x.png" class="responsive">
-                  <!-- Footer -->
-                
+               <div style="margin-bottom: -40px;">
+                <img src="assets/images/Mask Group 1.png" class="responsive" >
+               </div>
 
-<!-- Footer -->
-  
-                </div>
-                <footer class="footer bg-dark" style="padding:.5%">
+                <footer class="footer bg-dark col-md-12" style="padding:.1%;backface-visibility:hidden">
+                  <!-- <div  class="" style="margin-top: -110px;"> -->
                   
-                  <div class="col-xl">
+    
+                  <!-- </div> -->
+                  
+                  <div class="col-md-12 mt-5">
                     <div class="row">
-                      <div class="float-left">
+                      <div class="float-left ml-4">
                         <img src="assets/images/Group 4.png">
                       </div>
-                      <div class="col-sm-2">
+                      <div class="col-sm-1">
                         
                       </div>
                       <div class="col-lg">
@@ -267,11 +267,27 @@
 
 
 <script>
+    console.log(sessionStorage.getItem("email"))
+
+
+
    var socket = io()
   socket.on('cron', function(data) {
-    console.log(data,"crom")
+    console.log(data,"crom") 
+    console.log(sessionStorage.getItem("email"))
+
+      cronfun(data.time,data.email)
       
-alert("hiiii")            });
+           });
+function cronfun(param1,param2){
+  if(sessionStorage.getItem("email") == param2){
+  Swal.fire("You scheuled a meeting at"+" "+param1)
+  }
+  
+  
+
+}
+
   var link;
   sessionStorage.removeItem("link")
   // alert(sessionStorage.getItem("link"))
@@ -336,6 +352,14 @@ alert("hiiii")            });
   confirmButtonText: 'Yes'
 }).then((result) => {
   if(result.value){
+    sessionStorage.removeItem("email")
+    sessionStorage.removeItem("password")
+    sessionStorage.removeItem("meetingid")
+    sessionStorage.removeItem("url")
+
+
+
+
   window.location = "./index.html"
 
   }
@@ -653,6 +677,7 @@ else if(sessionStorage.getItem("link")=="schedule"){
   height: 25px;
   align-self: center;
 }
+
 
 
 

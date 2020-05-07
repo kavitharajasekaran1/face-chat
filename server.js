@@ -6,6 +6,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const cron = require("node-cron");
 var schedule = require('node-schedule');
+var nodemailer = require('nodemailer');
+
 
 
 
@@ -44,6 +46,10 @@ app.get('/index.html', function(req,res) {
     res.sendFile(path.join(__dirname+'/src/index.html'));
     });
 
+    app.get('/navbar.html', function(req,res) {
+      res.sendFile(path.join(__dirname+'/src/navbar.html'));
+      });
+
 io.of('/stream').on('connection', stream);
 
 // var count = 0;
@@ -65,6 +71,133 @@ io.on('connection', function (socket) {
   //   console.log("running a task every minute");
   
 //})
+
+
+
+// router.post('/schedule', async (req, res) => {
+
+// //       console.log("kkkkkkk")
+
+// //   var date = new Date(2020, 4, 5, 22 ,20, 40);
+  
+// //   var j = schedule.scheduleJob(date, function(){
+      
+// //       socket.emit("cron",date)
+// //       console.log("wonerfulll")
+
+  
+// // })
+// //   res.send({ result:"success"})
+
+
+// console.log(req.body)
+// let date = req.body.date;
+// let time = req.body.time;
+// var firstname = req.body.name;
+// var email = req.body.email
+// let meetingID = req.body.meetingid;
+// let url = req.body.url;
+// let split = date.split("-")
+// let year = split[0];
+// let date1 = split[1];
+// let day = split[2]
+
+// let split1 = time.split(":")
+// let hour = split1[0]
+// let minute = split1[1];
+
+// let totalminutes =Number(hour) *60 + Number(minute)
+// console.log(totalminutes)
+// lessten = totalminutes -10;
+// console.log(lessten)
+// function time_convert(num)
+// { 
+// var hours = Math.floor(num / 60);  
+// var minutes = num % 60;
+// console.log(minutes.toString())
+// if(minutes.toString().length ==1){
+  
+// minutes = "0"+minutes 
+// }
+// return hours + ":" + minutes;         
+// }
+// var final_time = time_convert(lessten)
+// console.log(final_time,"finaltime++++++++++++++++")
+// let split3 = final_time.split(":")
+// let final_hour = split3[0]
+// let final_minute = split3[1]
+// console.log(Number(year))
+// console.log(Number(day))
+// console.log(Number(final_hour))
+// console.log(Number(final_minute))
+
+
+
+
+// // var email = "k@mailinator.com"
+
+
+
+//     console.log("will execute")
+//     var data = new Date(Number(year), Number(date1)-1, Number(day), Number(final_hour) ,Number(final_minute), 0);
+//        console.log(data,"final")
+// //   var date = new Date(2020, 4, 5, 13 ,53, 0);
+// var j = schedule.scheduleJob(data, async function(){
+//   obj ={
+//     email:email,
+//     time : final_time
+
+
+//   }
+//   console.log(obj,"obj======")
+ 
+
+//   io.emit("cron",obj)
+//          console.log("wonerfulll")
+
+
+//  var transporter = nodemailer.createTransport({
+//      host: 'smtp.gmail.com',
+//      port: 587,
+//      secure: false,
+//      auth: {
+//          user: "sanedspsaservices@gmail.com",
+//          pass: "mnrdmpshtcbndtdj"
+//      }
+   
+//    });
+//    var mailOptions = {
+//      from: 'kavithasek@yahoo.co.in',
+//      to: "k@mailinator.com",
+//      subject: 'Advance Directive of ',
+//      // html:'<button style="font-weight: bold;color:white; font-size:14px;font-family: sans-serif" class="btn" onclick="dashboardCode()">LOG IN </button>' ,
+ 
+//      html:'<p>Hello</br>'+firstname+'</p>\n\n<p> please click the link to </p>' ,
+//   generateTextFromHtml: true,
+//    }
+//    transporter.sendMail(mailOptions, function(error, info){
+//      if (error) {
+//        console.log(error);
+//      } else {
+//        console.log('Email sent: ' + info.response);
+//      }
+//    });
+
+
+
+//  console.log('The world is going to end today.');
+
+// });
+
+// res.send({ result:"success"})
+
+
+
+
+
+//  })
+   
+ 
 
 
     let count = Object.keys(io.sockets.sockets).length;
