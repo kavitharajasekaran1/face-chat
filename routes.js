@@ -316,6 +316,7 @@ router.post('/schedule', async (req, res) => {
       `This is the invitation about developer weekly demo`+`join the meeting
       using meeting id ${meetingID} in the url ${url1}`,
       "colorId": 1,
+
       "start": {
     //    "date":"2020-05-07"
     "dateTime": meetingstarttime,
@@ -330,6 +331,7 @@ router.post('/schedule', async (req, res) => {
         "timeZone": 'Asia/Kolkata',
         // "date":"2020-05-07"
       },
+      "organizer":[{"email":"kavitha.rajasekaran@rapidqube.com"}],
       "attendees": 
         // // {
         // //  "email": "kavitha.rajasekaran@rapidqube.com",

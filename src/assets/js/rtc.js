@@ -389,6 +389,10 @@ var displayMediaOptions = {
 
 startElem.addEventListener("click", async function(evt) {
 
+    document.getElementById("start").style.display = "none"
+
+  document.getElementById("stopshare").style.display = "block"
+
     if(video.srcObject){
     let tracks = video.srcObject.getTracks();
     
@@ -411,23 +415,27 @@ viewVideo(video,context)
 socket.emit("button",data1)
 
 })
-var stoptElem = document.getElementById('stop')
+const stoptElem = document.getElementById("stopshare")
 
-// stoptElem.addEventListener("click", async function(evt) {
+stoptElem.addEventListener("click", async function(evt) {
 
-//     var data1 ={
-//                     room : room,
-//                     status:true,
-//                     sender:username,
-//                 }
-//                 let tracks = video.srcObject.getTracks();
+    document.getElementById("start").style.display = "block"
+
+    document.getElementById("stopshare").style.display = "none"
+
+    var data1 ={
+                    room : room,
+                    status:true,
+                    sender:username,
+                }
+                let tracks = video.srcObject.getTracks();
     
-//                 tracks.forEach(track => track.stop());
-//                 video.srcObject = null;    
+                tracks.forEach(track => track.stop());
+                video.srcObject = null;    
 
-// socket.emit("stopbutton",data1)
+socket.emit("stopbutton",data1)
 
-// })
+})
 
 
 document.getElementById('chat-input').addEventListener('keypress', (e)=>{
