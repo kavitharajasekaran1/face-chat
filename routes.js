@@ -319,6 +319,8 @@ router.post('/schedule', async (req, res) => {
       "start": {
     //    "date":"2020-05-07"
     "dateTime": meetingstarttime,
+    "timeZone": 'Asia/Kolkata',
+
 
 
        
@@ -361,7 +363,7 @@ router.post('/schedule', async (req, res) => {
         resource: {
           timeMin: eventStartTime,
           timeMax: eventEndTime,
-          timeZone: 'America/Denver',
+          timeZone: 'Asia/Kolkata',
           items: [{ id: 'primary' }],
         },
       },
