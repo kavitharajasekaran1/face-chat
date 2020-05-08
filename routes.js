@@ -250,7 +250,7 @@ module.exports= router =>{
 router.post('/schedule', async (req, res) => {
 
     console.log(req.body)
-    let url1 = "http://localhost:3000/index.html"
+    let url1 = "https://rapidqube-conference.herokuapp.com/index.html"
            let date = req.body.date;
            let time = req.body.time;
            var firstname = req.body.name;

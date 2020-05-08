@@ -308,7 +308,7 @@ if (!$('#toview').is(':visible')){
 
 // var socket = io.connect("http://localhost:3000")
 }
-var socket = io.connect("http://localhost:3000")
+var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
 var count
 socket.on('counter', function (data) {
@@ -358,7 +358,7 @@ $('#end-meeting').click(function(e){
  
   $.ajax({
                 type: "post", 
-                url:"http://localhost:3000/endmeeting",
+                url:"https://rapidqube-conference.herokuapp.com/endmeeting",
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 success: function(response) {
@@ -453,7 +453,7 @@ window.addEventListener('load', ()=>{
  
   $.ajax({
                 type: "post", 
-                url:"http://localhost:3000/signincheck",
+                url:"https://rapidqube-conference.herokuapp.com/signincheck",
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 success: function(response) {
