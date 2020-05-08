@@ -196,7 +196,7 @@
   <div class="container-fluid room-comm" hidden>
     <div class="row ">
         <video class="local-video" id='local' volume='0'  width="320" height="240" autoplay muted></video>
-        <video id="video" autoplay="true"></video>
+        <!-- <video id="video" autoplay="true"></video> -->
         <!-- <canvas id="preview"></canvas> -->
         <img src="" id="play" class="center">
         <div style="position: absolute; top: 50px; left: 50px;">
@@ -297,13 +297,13 @@
   
 </body>
 <script>
-var vid = document.getElementById("local");
+var vid = document.getElementById("local-video");
 
 function test(){
   if(vid.play()){
     vid.pause()
   }
-  else if(vid.pause()){
+  else{
     vid.play()   
   }
      
