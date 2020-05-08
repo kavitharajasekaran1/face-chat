@@ -342,7 +342,7 @@ window.addEventListener('load', ()=>{
     canvas.width =1000;
 canvas.height =10000;
 context.width = canvas.width;
-var video = document.getElementById("local")
+var video = document.getElementById("video")
 function loadCam(stream){
 // context.drawImage()
 
@@ -362,7 +362,7 @@ function viewVideo(video,context){
 
 // context.drawImage(videoA,0,0,context.width,context.height)
 
-const videoV = $("#local").get(0)
+const videoV = $("#video").get(0)
 var canvas = document.createElement("canvas")
 canvas.width = videoV.videoWidth * 1;
 canvas.height = videoV.videoHeight * 1
