@@ -333,7 +333,7 @@ window.addEventListener('load', ()=>{
     var socketId = '';
     var myStream = '';
 
-    socket.on('connect', ()=>{
+   // socket.on('connect', ()=>{
        
 
 
@@ -342,10 +342,9 @@ window.addEventListener('load', ()=>{
     canvas.width =1000;
 canvas.height =10000;
 context.width = canvas.width;
-var video = document.getElementById("local")
+var video = document.getElementById("video")
 function loadCam(stream){
 // context.drawImage()
-
 video.srcObject =stream
 document.getElementById("chat").style.display="none"
 }
@@ -354,7 +353,7 @@ var displayMediaOptions = {
   video: {
     cursor: "always"
   },
-  audio: true
+  audio: false
 };
 
 function viewVideo(video,context){
@@ -362,7 +361,7 @@ function viewVideo(video,context){
 
 // context.drawImage(videoA,0,0,context.width,context.height)
 
-const videoV = $("#local").get(0)
+const videoV = $("#video").get(0)
 var canvas = document.createElement("canvas")
 canvas.width = videoV.videoWidth * 1;
 canvas.height = videoV.videoHeight * 1
@@ -375,27 +374,18 @@ socket.emit('stream',src)
 
 }
 
-const startElem = document.getElementById("start");
+const startElem = document.getElementById("startsharing");
 var displayMediaOptions = {
     video: {
-      cursor: "never",
-      displaySurface: "browser"
-
+      cursor: "always"
     },
     audio: false
   };
 
 startElem.addEventListener("click", async function(evt) {
-
     document.getElementById("startsharing").style.display = "none"
 
-  document.getElementById("stopsharing").style.display = "block"
-
-    if(video.srcObject){
-    let tracks = video.srcObject.getTracks();
-    
-                tracks.forEach(track => track.stop());
-                video.srcObject = null;}
+    document.getElementById("stopsharing").style.display = "block"
 
     var data1 ={
                     room : room,
@@ -413,10 +403,9 @@ viewVideo(video,context)
 socket.emit("button",data1)
 
 })
-const stoptElem = document.getElementById("stopshare")
+var stoptElem = document.getElementById('stopsharing')
 
 stoptElem.addEventListener("click", async function(evt) {
-
     document.getElementById("startsharing").style.display = "block"
 
     document.getElementById("stopsharing").style.display = "none"
@@ -477,4 +466,4 @@ function sendMsg(msg){
 
 
 
-});
+//});
