@@ -318,7 +318,7 @@ router.post('/schedule', async (req, res) => {
       "colorId": 1,
       "start": {
     //    "date":"2020-05-07"
-    "dateTime": meetingstarttime,
+    "dateTime": "2020-08-05T12:00:00.000Z",
     "timeZone": 'Asia/Kolkata',
 
 
@@ -326,7 +326,7 @@ router.post('/schedule', async (req, res) => {
        
       },
       "end": {
-        "dateTime": meetingendtime,
+        "dateTime": "2020-08-05T12:45:00.000Z",
         "timeZone": 'Asia/Kolkata',
         // "date":"2020-05-07"
       },
