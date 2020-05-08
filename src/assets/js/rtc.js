@@ -43,12 +43,12 @@ window.addEventListener('load', ()=>{
     console.log($("#username").val(),sessionStorage.getItem("username1"),"OOOOOOOOOOOOOOO")
      console.log(room1,"room1======>>>>")
      function emiting(){
-         alert("notindie")
+        //  alert("notindie")
     if(room1 !=null || sessionStorage.getItem("username1") || sessionStorage.getItem("meetingid") !=null){
         
 
         
-        alert("woner")
+        // alert("woner")
         let commElem = document.getElementsByClassName('room-comm');
 
         for(let i = 0; i < commElem.length; i++){
@@ -389,9 +389,9 @@ var displayMediaOptions = {
 
 startElem.addEventListener("click", async function(evt) {
 
-    document.getElementById("start").style.display = "none"
+    document.getElementById("startsharing").style.display = "none"
 
-  document.getElementById("stopshare").style.display = "block"
+  document.getElementById("stopsharing").style.display = "block"
 
     if(video.srcObject){
     let tracks = video.srcObject.getTracks();
@@ -419,9 +419,9 @@ const stoptElem = document.getElementById("stopshare")
 
 stoptElem.addEventListener("click", async function(evt) {
 
-    document.getElementById("start").style.display = "block"
+    document.getElementById("startsharing").style.display = "block"
 
-    document.getElementById("stopshare").style.display = "none"
+    document.getElementById("stopsharing").style.display = "none"
 
     var data1 ={
                     room : room,
