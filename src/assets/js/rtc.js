@@ -232,24 +232,22 @@ window.addEventListener('load', ()=>{
                     let newVid = document.createElement('video');
                     newVid.id = `${partnerName}-video`;            
                     newVid.srcObject = str;
-                    
                     newVid.autoplay = true;
                     newVid.className = 'remote-video';
                     
                     //create a new div for card
-                    // let cardDiv = document.createElement('div');
-                    // cardDiv.className = 'card mb-3';
-                    // cardDiv.appendChild(newVid);
-                 
+                    let cardDiv = document.createElement('div');
+                    cardDiv.className = 'card mb-3';
+                    cardDiv.appendChild(newVid);
                     
-                    // //create a new div for everything
+                    //create a new div for everything
                     let div = document.createElement('div');
                     div.className = 'col-sm-12 col-md-6';
                     div.id = partnerName;
-                    div.appendChild(newVid);
+                    div.appendChild(cardDiv);
                     
                     //put div in videos elem
-                    document.getElementById('videos').appendChild(newVid);
+                    document.getElementById('videos').appendChild(div);
                 }
             };
 

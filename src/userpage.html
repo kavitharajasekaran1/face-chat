@@ -196,7 +196,7 @@
   <div class="container-fluid room-comm" hidden>
     <div class="row ">
         <video class="local-video" id='local' volume='0'  width="320" height="240" autoplay muted></video>
-        <!-- <video id="video" autoplay="true"></video> -->
+        <video id="video" autoplay="true"></video>
         <!-- <canvas id="preview"></canvas> -->
         <img src="" id="play" class="center">
         <div style="position: absolute; top: 50px; left: 50px;">
@@ -243,8 +243,7 @@
       <p style="font-size: 15px;">Chat</p>
     
     </div>
-    <div class="text-center  m-2">
-
+    <div class="text-center  m-2" id="startsharing">
       <img src="assets/images/003-shared-folder@2x.png" hspace="30" style="width: 40px;" id="start">
       <p style="font-size: 15px;">Share Screen</p>
     
@@ -264,12 +263,12 @@
       <img src="assets/images/004-microphone@2x.png" hspace="30" style="width: 40px;" >
     
       <a id="downloadButton" class="button" style="font-size: 15px; margin-left: -82px;color:white">
-       download
+       Stop Recording
       </a>
       
     
     </div>
-    <button id="downloading" onclick="recording1()" >Download</button>
+    <!-- <button id="downloading" onclick="recording1()" >Download</button> -->
 
     <div class=" text-center  m-2">
       <img src="assets/images/005-microphone-1@2x.png" style="width: 50px;" hspace="40">
@@ -277,7 +276,7 @@
     
     </div>
     <div class=" text-center  m-2 " id="videohide">
-      <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40">
+      <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40" onclick="test()">
       <p style="font-size: 15px;">Stop video</p>
     
     </div>
@@ -298,6 +297,19 @@
   
 </body>
 <script>
+var vid = document.getElementById("local-video");
+
+function test(){
+  if(vid.play()){
+    vid.pause()
+  }
+  else if(vid.pause()){
+    vid.play()   
+  }
+     
+                // console.log(this.paused)
+            // $('.local-video').click(function(){this.paused?this.play():this.pause();});
+            }
   var meetingid = sessionStorage.getItem("meetingid")
  
   console.log($('#toview').is(':visible'),"+++++++++++++++++++++++++")
