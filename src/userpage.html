@@ -341,6 +341,14 @@ socket.on('counter', function (data) {
             console.log(data,"socketonchat++++++++++++++++++")
           addChat(data, 'remote');
         })
+
+        socket.on('is_online', (data) =>{
+                console.log(data,"is_online")
+                if(data!=undefined){
+                            $('#messages').append($('<li>').html(data));
+                            }
+                            ding()
+                        })
 //   $(function() {
 
 // //This setTimeout function execute or call automatically when 5 second completed.
@@ -527,13 +535,8 @@ window.addEventListener('load', ()=>{
 // function modalopen(){
 //   $('#myModal').modal('show');
 // }
-socket.on('is_online', (data) =>{
-                console.log(data,"is_online")
-                if(data!=undefined){
-                            $('#messages').append($('<li>').html(data));
-                            }
-                           // ding()
-                        })
+
+
 
                     
 
