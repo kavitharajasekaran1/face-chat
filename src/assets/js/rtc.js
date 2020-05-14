@@ -85,10 +85,11 @@ window.addEventListener('load', ()=>{
                 pc.push(data.socketId);
                 value = value ++;
                 console.log(value)
+                var partner1 = data.socketId;
                 init(true, data.socketId,data.value);
                 // document.getElementById("counter") = data.value
             });
-
+            
 
             socket.on('newUserStart', (data)=>{
                 console.log(data,"new user start")
@@ -108,15 +109,26 @@ window.addEventListener('load', ()=>{
                 document.getElementById("chat").style.display="block"
 
                 $("#chat").show()
-                // window.href ="./index1.html"
             })
             socket.on('chat', (data)=>{
                 console.log(data,"chatdata++++++++++++++++++")
-                document.querySelector('#counter-chat').attributes.removeNamedItem('hidden');
-                document.getElementById("counter-chat").innerHTML=1;
+                var t1 =  $("#counter-chat").is(":hidden")
+                console.log(t1,"t1")
+                
+
+                if ( $("#counter-chat").is(":hidden")){
+                    console.log("entering+++________________")
+                    document.getElementById("counter-chat").style.display ="block"
+                    document.getElementById("counter-chat").innerHTML=1;
+                    h.addChat(data, 'remote');
+                    }
+                    else if( !$("#counter-chat").is(":hidden")){
+                        h.addChat(data, 'remote'); 
+                    }
+               
 
 
-              h.addChat(data, 'remote');
+            
           })
           //=================================user count=================================================//
         //   socket.on('counter', function (data) {
@@ -195,12 +207,21 @@ window.addEventListener('load', ()=>{
         
         
         function sendMsg(msg){
-            alert(sessionStorage.getItem("username"))
-            let data = {
+            if(sessionStorage.getItem("usernames") !=null){
+            var data = {
+                room: room,
+                msg: msg,
+                sender: sessionStorage.getItem("usernames")
+            };
+        }
+        else{
+            var data = {
                 room: room,
                 msg: msg,
                 sender: sessionStorage.getItem("username")
             };
+
+        }
         
             //emit chat message
             socket.emit('chat', data);
@@ -430,9 +451,22 @@ window.addEventListener('load', ()=>{
     document.getElementById("videodisplay").style.display ="block"
     document.getElementById("videohide").style.display ="none"
 
+   console.log(myStream)
+   var v = document.getElementById("local").srcObject
+   console.log(v,"v")
+   v.getVideoTracks()[0].enabled = false;
+//    h.closeVideo("local")
+  
+     
+        try{
+        //   myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
+        }
+         catch{
+           
+                  myStream.getVideoTracks()[0].stop()
+                
 
-         myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
-        //  myStream.getVideoTracks()[0].stop()
+        }
         // let tracks = d.srcObject.getTracks();
         
         //             tracks.forEach(track => track.stop());
@@ -444,9 +478,20 @@ window.addEventListener('load', ()=>{
     
         document.getElementById("videodisplay").style.display ="none"
         document.getElementById("videohide").style.display ="block"
+
+        var v = document.getElementById("local").srcObject
+        console.log(v,"v")
+        v.getVideoTracks()[0].enabled = true;
+
+        // h.getUserMedia().then(async (stream)=>{
+            
+        //         document.getElementById('local').srcObject = stream;
+            
+        // })
+       
     
     
-             myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
+            //  myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
     
         })
 
@@ -457,7 +502,10 @@ window.addEventListener('load', ()=>{
             e.preventDefault();
             document.getElementById("mute").style.display ="none"
             document.getElementById("unmute").style.display ="block"
-            myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+            var v = document.getElementById("local").srcObject
+   console.log(v,"v")
+   v.getAudioTracks()[0].enabled = false;
+            // myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
 
     })
     unmute.addEventListener("click", async function(e) {
@@ -465,7 +513,10 @@ window.addEventListener('load', ()=>{
             e.preventDefault();
             document.getElementById("unmute").style.display ="none"
             document.getElementById("mute").style.display ="block"
-            myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+            // myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+            var v = document.getElementById("local").srcObject
+            console.log(v,"v")
+            v.getAudioTracks()[0].enabled = true;
 
     })
 

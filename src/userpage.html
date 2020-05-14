@@ -239,7 +239,7 @@
     
     </div>
     <div class="text-center  m-2">
-      <div class="circle center" id="counter-chat" hidden></div>
+      <div class="circle center" id="counter-chat" style="display: none;"></div>
 
       <img src="assets/images/002-client.png" hspace="30" style="width: 40px;">
 
@@ -818,7 +818,11 @@ const mediaSource = new MediaSource();
 
   function openForm() {
   document.getElementById("myForm").style.display = "block";
-  document.getElementById("counter-chat").style.display ="none"
+  // $('#counter-chat').removeAttr('hidden');
+  document.getElementById("counter-chat").style.display = "none";
+
+
+  // document.getElementById("counter-chat").style.visibility ="hidden"
 }
 
 function closeForm() {

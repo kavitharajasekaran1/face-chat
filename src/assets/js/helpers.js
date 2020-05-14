@@ -73,6 +73,7 @@ export default {
     
     
     addChat(data, senderType){
+        
        
         let chatMsgDiv = document.querySelector('#chat-messages');
         let contentAlign = 'justify-content-end';
@@ -80,12 +81,17 @@ export default {
         let msgBg = 'bg-white';
 
         if(senderType === 'remote'){
+       
             contentAlign = 'justify-content-start';
             senderName = data.sender;
             msgBg = '';
 
             this.toggleChatNotificationBadge();
         }
+             // document.getElementById("counter-chat").style.display ="block"
+            
+
+            
 
         let infoDiv = document.createElement('div');
         infoDiv.className = 'sender-info';
@@ -112,6 +118,7 @@ export default {
         if(this.pageHasFocus){
             rowDiv.scrollIntoView();
         }
+    
     },
     getUserMedia1(){
         

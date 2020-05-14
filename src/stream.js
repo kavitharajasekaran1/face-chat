@@ -97,7 +97,9 @@ const stream = (socket)=>{
 
     socket.on('chat', (data)=>{
         console.log(data,"chatdata++++++++++++++")
-        socket.to(data.room).emit('chat', {sender: data.sender, msg: data.msg});
+        // socket.to(data.room).emit('chat', {sender: data.sender, msg: data.msg});
+        socket.broadcast.emit('chat',data)
+
     });
     socket.on('button',(data)=>{
         console.log(data,"button status")
