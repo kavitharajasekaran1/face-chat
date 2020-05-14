@@ -1,6 +1,45 @@
 const value =[]
+
+
+// io.on('connection', function (socket) {
+
+
+//     let count = Object.keys(io.sockets.sockets).length;
+//     console.log(count,"real count")
+  
+   
+  
+  
+  
+  
+  
+//      socket.emit('counter', {count:count});
+//      socket.on('disconnect', function() {
+
+//         // if ($ipsConnected.hasOwnProperty($ipAddress)) {
+//         let count = Object.keys(io.sockets.sockets).length;
+      
+      
+//           count--;
+      
+//           socket.emit('counter', {count:count});
+      
+//         //}
+      
+      
+      
+      
+//       });
+      
+
+// })
+
+
+
 const stream = (socket)=>{
     let connections=[]
+
+  
 
     socket.on('subscribe', (data)=>{
         //subscribe/join a room
@@ -8,19 +47,29 @@ const stream = (socket)=>{
         socket.join(data.socketId);
         value.push(data.room)
         console.log(socket.adapter.rooms[data.room].length,"socket in streammmmmmmm")
+
+
+       
+
+
+
+        
         
 
         //Inform other members in the room of new user's arrival
         if(socket.adapter.rooms[data.room].length > 1){
-            // socket.emit('counter',(data)=>{
-            //     console.log(data,"real count2====>>>")
-            // })
-            
+            socket.emit('counter',(data)=>{
+                console.log(data,"real count2====>>>")
+            })
             socket.to(data.room).emit('new user', {socketId:data.socketId,value:socket.adapter.rooms[data.room].length});
         }
 
         console.log(socket.rooms);
     });
+
+          
+
+
 
     socket.on('screensharing', (data)=>{
         console.log(data,"screen sharing")
@@ -55,9 +104,10 @@ const stream = (socket)=>{
         socket.to(data.room).emit('button',data);
     })
     socket.on('stream',function(image){
-        // console.log(image,"streammmmmmmmmm")
+         console.log(image,"streammmmmmmmmm")
         socket.broadcast.emit('stream',image)
     })
+    
    
       
 }

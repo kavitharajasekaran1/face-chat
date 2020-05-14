@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <head>
+    <title>Video Call</title>
 
-          
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel='stylesheet' href='assets/css/app.css' type="text/css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src='/socket.io/socket.io.js'></script>
-  <script type="module" src='assets/js/rtc.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
-
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-   <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <script type="module" src='assets/js/rtc.js'></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-   <link rel='stylesheet' href='assets/css/app.css' type="text/css">
-   <script src='/socket.io/socket.io.js'></script>
-
-   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel='stylesheet' href='assets/css/app.css' type="text/css">
+    <!-- <script src="jquery-3.4.1.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <title>Conference-page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+<!------------------------------------------------------------------------------------>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="html2canvas-master/dist/html2canvas.js"></script>
+    <script src='/socket.io/socket.io.js'></script>
+    <script type="module" src='assets/js/rtc.js'></script>
+    <!-- <script type="module" src='assets/js/events.js'></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/7.3.0/adapter.min.js" integrity="sha256-2qQheewaqnZlXJ3RJRghVUwD/3fD9HNqxh4C+zvgmF4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      @media screen and (min-width: 768px) {
+          .modal-dialog {
+            width: 300px; /* New width for default modal */
+          }
+         
+      }
+     
+      </style>
 </head>
+
 <body>
 
   <div class="container-fluid" id='username-set' hidden >
@@ -77,7 +79,7 @@
 
 
 
-  <div class="modal" id="myModal">
+  <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
@@ -116,62 +118,60 @@
   <!------------------------------------------chat------------------------------------------------>
 
 
-  <div class="chat-popup" id="myForm" id='chat-pane'>
-    <form action="/action_page.php" class="form-container">
-      <!-- <h1>Chat</h1> -->
+  <div class="col-md-3 chat-col d-print-none mb-2 bg-info" id='chat-pane' >
 
-      <div class="pull-right room-comm" hidden>
-        <!-- <button class="btn btn-sm rounded-0 btn-no-effect" id='toggle-video' onclick="test()">
-            <i class="fa fa-video text-white"></i>
-        </button> -->
-
-        <!-- <button class="btn btn-sm rounded-0 btn-no-effect" id='toggle-mute'>
-            <i class="fa fa-volume-up text-white"></i>
-        </button> -->
-
-        <button class="btn btn-sm text-white pull-right d-md-none btn-no-effect" id='toggle-chat-pane'>
-            <i class="fa fa-comment"></i> <span class="badge badge-danger very-small font-weight-lighter" id='new-chat-notification' hidden>New</span>
-        </button>
-
-        <!-- <button class="btn btn-sm rounded-0 btn-no-effect text-white">
-            <a href="/" class="text-white text-decoration-none">Leave Chat</a>
-        </button> -->
-       
-
-
-
-
-    </div>
-
-
-
-
+    <div class="chat-popup" id="myForm" id='chat-pane' style="height: 400px;overflow:auto;margin-bottom: 118px;" >
+      <form  class="form-container" style="height:30%">
+        <i class="fa fa-close" style="font-size:24px;align-content: flex-end;" onclick="closeForm()"></i>
   
-      <label for="msg"><b>Message</b></label>
-      <div id='chat-messages'></div>              
-                   
-
-
-      <div class="row">
-          <textarea id='chat-input' class="form-control rounded-0 chat-box border-info" rows='3' placeholder="Type here..."></textarea>
+        <!-- <h1>Chat</h1> -->
+  
+        <div class="pull-right room-comm" hidden>
+          <!-- <button class="btn btn-sm rounded-0 btn-no-effect" id='toggle-video' onclick="test()">
+              <i class="fa fa-video text-white"></i>
+          </button> -->
+  
+          <!-- <button class="btn btn-sm rounded-0 btn-no-effect" id='toggle-mute'>
+              <i class="fa fa-volume-up text-white"></i>
+          </button> -->
+  
+          <button class="btn btn-sm text-white pull-right d-md-none btn-no-effect" id='toggle-chat-pane'>
+              <i class="fa fa-comment"></i> <span class="badge badge-danger very-small font-weight-lighter" id='new-chat-notification' hidden>New</span>
+          </button>
+  
+          <!-- <button class="btn btn-sm rounded-0 btn-no-effect text-white">
+              <a href="/" class="text-white text-decoration-none">Leave Chat</a>
+          </button> -->
+         
+  
+  
+  
+  
       </div>
-      <button type="submit" class="btn">Send</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
-  </div>
-
-
   
   
-
-
-
-
-
-
-
-
-
+  
+  
+    
+        <label for="msg"><b>Message</b></label>
+        <div  id='chat-messages'  ></div>              
+                     
+         <button class="btn btn-sm text-white pull-right d-md-none btn-no-effect" id='toggle-chat-pane'>
+                      <i class="fa fa-comment"></i> <span class="badge badge-danger very-small font-weight-lighter" id='new-chat-notification' hidden>New</span>
+                  </button>
+  
+        <!-- <div class="row"> -->
+            <textarea id='chat-input' class="form-control rounded-0 chat-box border-info" style="margin-top:260px" rows='2'  placeholder="Type here..."></textarea>
+        </div>
+      </form>
+    </div>
+    </div>
+   
+  
+  
+    
+  
+  
   <!-------------------------------------------------ends------------------------------------------->
 
 
@@ -195,7 +195,7 @@
 
   <div class="container-fluid room-comm" hidden>
     <div class="row ">
-      <video class="local-video" id='local' volume='0' autoplay muted></video>
+      <video class="local-video" id='local' volume='0' width="100" height="100" autoplay muted></video>
       <video id="video" autoplay="true"></video>
       <!-- <canvas id="preview"></canvas> -->
       <img src="" id="play" class="center">
@@ -239,9 +239,11 @@
     
     </div>
     <div class="text-center  m-2">
+      <div class="circle center" id="counter-chat" hidden></div>
+
       <img src="assets/images/002-client.png" hspace="30" style="width: 40px;">
 
-      <p style="font-size: 15px;">Chat</p>
+      <p style="font-size: 15px;" onclick="openForm()">Chat</p>
     
     </div>
     <div class="text-center  m-2" id="startsharing">
@@ -253,7 +255,7 @@
       <img src="assets/images/003-shared-folder@2x.png" hspace="30" style="width: 40px; " id="stopshare">
       <p style="font-size: 15px;">Stop Share</p>
       </div>
-    <div class=" text-center  m-2" id="startButton">
+    <div class=" text-center  m-2" id="startButton" hidden>
       <img src="assets/images/004-microphone@2x.png" hspace="30" style="width: 40px;">
       <p style="font-size: 15px;">Record</p>
     
@@ -271,21 +273,26 @@
     </div>
     <!-- <button id="downloading" onclick="recording1()" >Download</button> -->
 
-    <div class=" text-center  m-2">
+    <div class=" text-center  m-2" onclick="mutevideo()" id="mute">
       <img src="assets/images/005-microphone-1@2x.png" style="width: 50px;" hspace="40">
       <p style="font-size: 15px;">Mute</p>
     
     </div>
-    <div class=" text-center  m-2 " id="videohide">
-      <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40" onclick="test()">
+    <div class=" text-center  m-2" onclick="unmutevideo()"  id="unmute" style="display: none;">
+      <img src="assets/images/005-microphone-1@2x.png" style="width: 50px;" hspace="40">
+      <p style="font-size: 15px;"> UnMute</p>
+    
+    </div>
+    <div class=" text-center  m-2 " id="videohide" >
+      <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40" >
       <p style="font-size: 15px;">Stop video</p>
     
     </div>
-    <!-- <div class=" text-center  m-2 " id="videodisplay">
+    <div class=" text-center  m-2 " id="videodisplay" style="display: none;">
       <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40">
       <p style="font-size: 15px;">Start video</p>
     
-    </div> -->
+    </div>
     <div class=" text-center  m-2 p-3"  id ="end-meeting1" hidden>
       <!-- <img src="assets/images/video-camera@2x.png" style="width: 50px;" hspace="40"> -->
       <p style="font-size: 20px;color: red;  cursor: pointer;" id="end-meeting">End Meeting</p>
@@ -298,22 +305,41 @@
   
 </body>
 <script>
-var vid = document.getElementById("local-video");
+  // var socket = io.connect("http://localhost:3000")
+  var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
-function test(){
-  if(vid.play()){
-    vid.pause()
+  console.log(sessionStorage.getItem('usernames'),"inside the userpage++++++++++++++++++")
+  if( sessionStorage.getItem( "usernames") !=null){
+     socket.emit('username1', sessionStorage.getItem( "usernames"))
   }
-  else{
-    vid.play()   
-  }
-     
-                // console.log(this.paused)
-            // $('.local-video').click(function(){this.paused?this.play():this.pause();});
+
+  window.onload = function () {
+  alert("me1")
+
+   sessionStorage.removeItem( "username");
+};
+var vid = document.getElementById("local");
+
+// function stopvideo(){
+//   document.getElementById('local').remove();
+// }
+
+function stopvideo(){
+  // if(vid.play()){
+  //   vid.pause()
+  // }
+  // else{
+  //   vid.play()   
+  // }
+  console.log(myStream,"mystream+++++++++++++++++++++++++++++++++++++")
+ 
+  myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
+
+               
             }
   var meetingid = sessionStorage.getItem("meetingid")
  
-  console.log($('#toview').is(':visible'),"+++++++++++++++++++++++++")
+  // console.log($('#toview').is(':visible'),"+++++++++++++++++++++++++")
   $('#counter').click(function(e){
     e.preventDefault();
     
@@ -326,21 +352,35 @@ if (!$('#toview').is(':visible')){
 
 // var socket = io.connect("http://localhost:3000")
 }
-var socket = io.connect("https://rapidqube-conference.herokuapp.com")
+// var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
-var count
-socket.on('counter', function (data) {
+
+// function mutevideo(){
+// var vid = document.getElementById("local")
+// vid.muted = true;
+// alert(vid.muted)
+// document.getElementById("unmute").style.display ="block"
+// document.getElementById("mute").style.display ="none"
+
+// }
+// function unmutevideo(){
+//   var vid = document.getElementById("local")
+// vid.muted = false;
+// alert(vid.muted)
+// document.getElementById("mute").style.display ="block"
+// document.getElementById("unmute").style.display ="none"
+
+// }
+
+            socket.on('counter', function (data) {
     console.log(data.count,"counter====>>>")
-   count = data.count
+    var count = data.count
 
     document.getElementById("counter").innerHTML=data.count;
    
   
   });
-  socket.on('chat', (data)=>{
-            console.log(data,"socketonchat++++++++++++++++++")
-          addChat(data, 'remote');
-        })
+ 
 
         socket.on('is_online', (data) =>{
                 console.log(data,"is_online")
@@ -349,17 +389,26 @@ socket.on('counter', function (data) {
                             }
                             ding()
                         })
-//   $(function() {
+                        socket.on('endmeeting',(data)=>{
+                          if(data =="true"){
+                            Swal.fire({
+  title: 'Meeting is ended by the host',
+  // text: "You won't be able to revert this!",
+  icon: 'warning',
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'OK'
+  
+}).then((result) => {
+  if (result.value) {
 
-// //This setTimeout function execute or call automatically when 5 second completed.
-// setTimeout(function() {
-//     console.log(count,"disnide settime out")
-//     document.getElementById("counter").innerHTML = count;
-// }, 1000);
-//              }) 
+    
+    var win = window.open("about:blank", "_self");
+win.close();
+  }
+})
+                          }
+                        })
 
-var connecteduser = sessionStorage.getItem("username1")
-console.log(connecteduser,"kavitha")
 
 
 $('#end-meeting').click(function(e){
@@ -385,6 +434,8 @@ $('#end-meeting').click(function(e){
   $.ajax({
                 type: "post", 
                 url:"https://rapidqube-conference.herokuapp.com/endmeeting",
+                // url:"http://localhost:3000/endmeeting",
+
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 success: function(response) {
@@ -404,11 +455,8 @@ $('#end-meeting').click(function(e){
   
 }).then((result) => {
   if (result.value) {
-    // Swal.fire(
-    //   'Deleted!',
-    //   'Your file has been deleted.',
-    //   'success'
-    // )
+    socket.emit("endmeeting","true")
+
     recording1()
     var win = window.open("about:blank", "_self");
 win.close();
@@ -440,14 +488,15 @@ window.addEventListener('load', ()=>{
 
   var checking =  setInterval(function(){ execution(); }, 3000);
   if(room !=null || room == "" || meetingid !=null ){
-    console.log("entering",sessionStorage.getItem("room"))
+    console.log("entering",sessionStorage.getItem("room"),sessionStorage.getItem('username'))
     // clearInterval(checking);
     clearTimeout(checking);
-    socket.emit('username1',sessionStorage.getItem('username'))
+    // socket.emit('username1',sessionStorage.getItem('username'))
 
 
     document.querySelector('#toview').attributes.removeNamedItem('hidden');
     document.querySelector('#end-meeting1').attributes.removeNamedItem('hidden');
+    document.querySelector('#startButton').attributes.removeNamedItem('hidden');
 
 
   
@@ -480,6 +529,8 @@ window.addEventListener('load', ()=>{
   $.ajax({
                 type: "post", 
                 url:"https://rapidqube-conference.herokuapp.com/signincheck",
+                // url:"http://localhost:3000/signincheck",
+
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 success: function(response) {
@@ -767,61 +818,12 @@ const mediaSource = new MediaSource();
 
   function openForm() {
   document.getElementById("myForm").style.display = "block";
+  document.getElementById("counter-chat").style.display ="none"
 }
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
-function addChat(data, senderType){
-       
-       let chatMsgDiv = document.querySelector('#chat-messages');
-       let contentAlign = 'justify-content-end';
-       let senderName = 'You';
-       let msgBg = 'bg-white';
-
-       if(senderType === 'remote'){
-           contentAlign = 'justify-content-start';
-           senderName = data.sender;
-           msgBg = '';
-
-          toggleChatNotificationBadge();
-       }
-
-       let infoDiv = document.createElement('div');
-       infoDiv.className = 'sender-info';
-       infoDiv.innerHTML = `${senderName} - ${moment().format('Do MMMM, YYYY h:mm a')}`;
-
-       let colDiv = document.createElement('div');
-       colDiv.className = `col-10 card chat-card msg ${msgBg}`;
-       colDiv.innerHTML =  data.msg;
-
-       let rowDiv = document.createElement('div');
-       rowDiv.className = `row ${contentAlign} mb-2`;
-
-
-       colDiv.appendChild(infoDiv);
-       rowDiv.appendChild(colDiv);
-
-       chatMsgDiv.appendChild(rowDiv);
-
-       /**
-        * Move focus to the newly added message but only if:
-        * 1. Page has focus
-        * 2. User has not moved scrollbar upward. This is to prevent moving the scroll position if user is reading previous messages.
-        */
-       if(this.pageHasFocus){
-           rowDiv.scrollIntoView();
-       }
-   }
-   function toggleChatNotificationBadge(){
-        if(document.querySelector('#chat-pane').classList.contains('chat-opened')){
-            document.querySelector('#new-chat-notification').setAttribute('hidden', true);
-        }
-
-        else{
-            document.querySelector('#new-chat-notification').removeAttribute('hidden');
-        }
-    }
 
 
 
@@ -955,7 +957,7 @@ body {
   border: none;
   background: #f1f1f1;
   resize: none;
-  min-height: 200px;
+  min-height: 50px;
 }
 
 /* When the textarea gets focus, do something */
@@ -985,6 +987,7 @@ body {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
 
 
 

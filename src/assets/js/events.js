@@ -95,8 +95,8 @@ window.addEventListener('load', ()=>{
         }
     });
 
-    if(sessionStorage.getItem('username') !=null){
-        socket.emit('username1',sessionStorage.getItem('username'))
-    }
+    // if(sessionStorage.getItem('username') !=null){
+    //     socket.emit('username1',sessionStorage.getItem('username'))
+    // }
   
 })

@@ -5,6 +5,8 @@ window.addEventListener('load', ()=>{
     const room = h.getQString(location.href, 'room');
     const room1 = sessionStorage.getItem("room")
     const username = sessionStorage.getItem('username');
+    // socket.emit('username1',sessionStorage.getItem('username'))
+
     var click =""
     emiting()
     $('#enter-room').click(function(e){
@@ -13,8 +15,8 @@ window.addEventListener('load', ()=>{
         document.querySelector('#username-set').style.display ="none";
         var user = $("#username").val()
         // alert(user)
-        sessionStorage.setItem("username1",user)
-        socket.emit('username1',user)
+        sessionStorage.setItem("username",user)
+         socket.emit('username1',user)
         emiting()
       
     
@@ -43,10 +45,10 @@ window.addEventListener('load', ()=>{
     console.log($("#username").val(),sessionStorage.getItem("username1"),"OOOOOOOOOOOOOOO")
      console.log(room1,"room1======>>>>")
      function emiting(){
-        //  alert("notindie")
-    if(room1 !=null || sessionStorage.getItem("username1") || sessionStorage.getItem("meetingid") !=null){
-        
-
+        alert("notindie")
+   if(room1 !=null || sessionStorage.getItem("username") || sessionStorage.getItem("meetingid") !=null){
+       
+            alert("wonderful")
         
         // alert("woner")
         let commElem = document.getElementsByClassName('room-comm');
@@ -68,19 +70,7 @@ window.addEventListener('load', ()=>{
 
             console.log(socketId,"socket+++++++++++++++++++++")
                
-                
-            // socket.on('counter', function (data) {
-            //     console.log(data.count,"counter====>>>")
-            
-            //     document.getElementById("counter").innerHTML=data.count;
-              
-            //   });
-
-            // socket.emit('username',username)
-            // socket.on('is_online', function(username) {
-      
-            //     $('#messages').append($('<li>').html(username));
-            // });
+             
 
 
             socket.emit('subscribe', {
@@ -96,7 +86,7 @@ window.addEventListener('load', ()=>{
                 value = value ++;
                 console.log(value)
                 init(true, data.socketId,data.value);
-                document.getElementById("counter") = data.value
+                // document.getElementById("counter") = data.value
             });
 
 
@@ -120,6 +110,24 @@ window.addEventListener('load', ()=>{
                 $("#chat").show()
                 // window.href ="./index1.html"
             })
+            socket.on('chat', (data)=>{
+                console.log(data,"chatdata++++++++++++++++++")
+                document.querySelector('#counter-chat').attributes.removeNamedItem('hidden');
+                document.getElementById("counter-chat").innerHTML=1;
+
+
+              h.addChat(data, 'remote');
+          })
+          //=================================user count=================================================//
+        //   socket.on('counter', function (data) {
+        //       alert("counter")
+        //     console.log(data.count,"counter====>>>")
+        //    count = data.count
+        
+        //     document.getElementById("counter").innerHTML=data.count;          
+          
+        //   });
+          //=================================================================================================//
 
 
             socket.on('ice candidates', async (data)=>{
@@ -171,12 +179,46 @@ window.addEventListener('load', ()=>{
            
           
          })
+         
+         document.getElementById('chat-input').addEventListener('keypress', (e)=>{
+            if(e.which === 13 && (e.target.value.trim())){
+                e.preventDefault();
+                // alert(e.target.value)
+                
+                sendMsg(e.target.value);
+        
+                setTimeout(()=>{
+                    e.target.value = '';
+                }, 50);
+            }
+        });
+        
+        
+        function sendMsg(msg){
+            alert(sessionStorage.getItem("username"))
+            let data = {
+                room: room,
+                msg: msg,
+                sender: sessionStorage.getItem("username")
+            };
+        
+            //emit chat message
+            socket.emit('chat', data);
+        
+        
+            //add localchat
+            h.addChat(data, 'local');
+        }
+        
+        
+        
 
 
         
 
 
         function init(createOffer, partnerName,value){
+            console.log("initfunction")
             pc[partnerName] = new RTCPeerConnection(h.getIceServer());
             // console.log(document.getElementById('start').disabled)
 
@@ -230,7 +272,9 @@ window.addEventListener('load', ()=>{
               else{
                     //video elem
                     let newVid = document.createElement('video');
-                    newVid.id = `${partnerName}-video`;            
+                    newVid.id = `${partnerName}-video`; 
+                    newVid.width ="200";
+                    newVid.height ="200"           
                     newVid.srcObject = str;
                     newVid.autoplay = true;
                     newVid.className = 'remote-video';
@@ -244,6 +288,9 @@ window.addEventListener('load', ()=>{
                     let div = document.createElement('div');
                     div.className = 'col-sm-12 col-md-6';
                     div.id = partnerName;
+                   
+           
+                    
                     div.appendChild(cardDiv);
                     
                     //put div in videos elem
@@ -285,31 +332,155 @@ window.addEventListener('load', ()=>{
             };
         }
 
+        var canvas = document.getElementById("preview")
+        var context = canvas.getContext("2d")
+        canvas.width =1000;
+    canvas.height =10000;
+    context.width = canvas.width;
+    var video = document.getElementById("video")
+    function loadCam(stream){
+    // context.drawImage()
+    video.srcObject =stream
+    document.getElementById("chat").style.display="none"
+    }
+    
+    var displayMediaOptions = {
+      video: {
+        cursor: "always"
+      },
+      audio: false
+    };
+    
+    function viewVideo(video,context){
+        let videoA = document.getElementById("video")
+    
+    // context.drawImage(videoA,0,0,context.width,context.height)
+    
+    const videoV = $("#video").get(0)
+    var canvas = document.createElement("canvas")
+    canvas.width = videoV.videoWidth * 1;
+    canvas.height = videoV.videoHeight * 1
+    canvas.getContext("2d").drawImage(videoV,0,0,canvas.width,canvas.height)
+    let src = canvas.toDataURL()
+    // console.log(src,"src++++++++++")
+    socket.emit('stream',src)
+    //socket.emit('stream',Math.random())
+    
+    }
+    
+    const startElem = document.getElementById("startsharing");
+    var displayMediaOptions = {
+        video: {
+          cursor: "always"
+        },
+        audio: false
+      };
+    
+    startElem.addEventListener("click", async function(evt) {
+        alert("hiii")
+        document.getElementById("startsharing").style.display = "none"
+    
+        document.getElementById("stopsharing").style.display = "block"
+    
+        var data1 ={
+                        room : room,
+                        status:true,
+                        sender:username,
+                    }
+    var value =await navigator.mediaDevices.getDisplayMedia({displayMediaOptions})
+    loadCam(value)
+    //  viewVideo(video,context)
+    
+    setInterval(function(){
+    viewVideo(video,context)
+    
+    },2000)
+    socket.emit("button",data1)
+    
+    })
+    var stoptElem = document.getElementById('stopsharing')
+    
+    stoptElem.addEventListener("click", async function(evt) {
+        document.getElementById("startsharing").style.display = "block"
+    
+        document.getElementById("stopsharing").style.display = "none"
+    
+        var data1 ={
+                        room : room,
+                        status:true,
+                        sender:username,
+                    }
+                    let tracks = video.srcObject.getTracks();
+        
+                    tracks.forEach(track => track.stop());
+                    video.srcObject = null;    
+    
+    socket.emit("stopbutton",data1)
+    
+    })
+
+    //=================================================stop and start video=========================================//
+    var videohide = document.getElementById("videohide")
+    var videohide1 = document.getElementById("videodisplay")
+    var d =document.getElementById("local")
+
+   videohide.addEventListener("click", async function(e) {
+    e.preventDefault();
+    console.log(myStream,"testing=========>>>")
+    document.getElementById("videodisplay").style.display ="block"
+    document.getElementById("videohide").style.display ="none"
+
+
+         myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
+        //  myStream.getVideoTracks()[0].stop()
+        // let tracks = d.srcObject.getTracks();
+        
+        //             tracks.forEach(track => track.stop());
+
+    })
+    videohide1.addEventListener("click", async function(e) {
+        e.preventDefault();
+        // console.log(myStream,"testing=========>>>")
+    
+        document.getElementById("videodisplay").style.display ="none"
+        document.getElementById("videohide").style.display ="block"
+    
+    
+             myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
+    
+        })
+
+   var mute = document.getElementById("mute")
+   var unmute = document.getElementById("unmute")
+    mute.addEventListener("click", async function(e) {
+        console.log("muted++++++++++++++++++")
+            e.preventDefault();
+            document.getElementById("mute").style.display ="none"
+            document.getElementById("unmute").style.display ="block"
+            myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+
+    })
+    unmute.addEventListener("click", async function(e) {
+        console.log("muted++un++++++++++++++++")
+            e.preventDefault();
+            document.getElementById("unmute").style.display ="none"
+            document.getElementById("mute").style.display ="block"
+            myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+
+    })
+
+    
+    
+    
+    
+    
+    
+    
+        
+
 
        
 
-
-        // document.getElementById('toggle-video').addEventListener('click', (e)=>{
-        //     e.preventDefault();
-        //     console.log(myStream,"testing=========>>>")
-
-        //     myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
-
-        //     //toggle video icon
-        //     e.srcElement.classList.toggle('fa-video');
-        //     e.srcElement.classList.toggle('fa-video-slash');
-        // });
-
-
-        // document.getElementById('toggle-mute').addEventListener('click', (e)=>{
-        //     e.preventDefault();
-
-        //     myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
-
-        //     //toggle audio icon
-        //     e.srcElement.classList.toggle('fa-volume-up');
-        //     e.srcElement.classList.toggle('fa-volume-mute');
-        // });
 
 
     
@@ -328,131 +499,101 @@ window.addEventListener('load', ()=>{
 
     }
     
-    let socket = io('/stream');
+    // let socket = io('/stream');
 
-    var socketId = '';
-    var myStream = '';
+    // var socketId = '';
+    // var myStream = '';
 
-   // socket.on('connect', ()=>{
        
 
 
-    var canvas = document.getElementById("preview")
-    var context = canvas.getContext("2d")
-    canvas.width =1000;
-canvas.height =10000;
-context.width = canvas.width;
-var video = document.getElementById("video")
-function loadCam(stream){
-// context.drawImage()
-video.srcObject =stream
-document.getElementById("chat").style.display="none"
-}
+//     var canvas = document.getElementById("preview")
+//     var context = canvas.getContext("2d")
+//     canvas.width =1000;
+// canvas.height =10000;
+// context.width = canvas.width;
+// var video = document.getElementById("video")
+// function loadCam(stream){
+// // context.drawImage()
+// video.srcObject =stream
+// document.getElementById("chat").style.display="none"
+// }
 
-var displayMediaOptions = {
-  video: {
-    cursor: "always"
-  },
-  audio: false
-};
+// var displayMediaOptions = {
+//   video: {
+//     cursor: "always"
+//   },
+//   audio: false
+// };
 
-function viewVideo(video,context){
-    let videoA = document.getElementById("video")
+// function viewVideo(video,context){
+//     let videoA = document.getElementById("video")
 
-// context.drawImage(videoA,0,0,context.width,context.height)
+// // context.drawImage(videoA,0,0,context.width,context.height)
 
-const videoV = $("#video").get(0)
-var canvas = document.createElement("canvas")
-canvas.width = videoV.videoWidth * 1;
-canvas.height = videoV.videoHeight * 1
-canvas.getContext("2d").drawImage(videoV,0,0,canvas.width,canvas.height)
-let src = canvas.toDataURL()
-// console.log(src,"src++++++++++")
+// const videoV = $("#video").get(0)
+// var canvas = document.createElement("canvas")
+// canvas.width = videoV.videoWidth * 1;
+// canvas.height = videoV.videoHeight * 1
+// canvas.getContext("2d").drawImage(videoV,0,0,canvas.width,canvas.height)
+// let src = canvas.toDataURL()
+// // console.log(src,"src++++++++++")
+// socket.emit('stream',src)
+// //socket.emit('stream',Math.random())
 
-socket.emit('stream',src)
-//socket.emit('stream',Math.random())
+// }
 
-}
+// const startElem = document.getElementById("startsharing");
+// var displayMediaOptions = {
+//     video: {
+//       cursor: "always"
+//     },
+//     audio: false
+//   };
 
-const startElem = document.getElementById("startsharing");
-var displayMediaOptions = {
-    video: {
-      cursor: "always"
-    },
-    audio: false
-  };
+// startElem.addEventListener("click", async function(evt) {
+//     alert("hiii")
+//     document.getElementById("startsharing").style.display = "none"
 
-startElem.addEventListener("click", async function(evt) {
-    document.getElementById("startsharing").style.display = "none"
+//     document.getElementById("stopsharing").style.display = "block"
 
-    document.getElementById("stopsharing").style.display = "block"
+//     var data1 ={
+//                     room : room,
+//                     status:true,
+//                     sender:username,
+//                 }
+// var value =await navigator.mediaDevices.getDisplayMedia({displayMediaOptions})
+// loadCam(value)
+// //  viewVideo(video,context)
 
-    var data1 ={
-                    room : room,
-                    status:true,
-                    sender:username,
-                }
-var value =await navigator.mediaDevices.getDisplayMedia({displayMediaOptions})
-loadCam(value)
-//  viewVideo(video,context)
+// setInterval(function(){
+// viewVideo(video,context)
 
-setInterval(function(){
-viewVideo(video,context)
+// },2000)
+// socket.emit("button",data1)
 
-},2000)
-socket.emit("button",data1)
+// })
+// var stoptElem = document.getElementById('stopsharing')
 
-})
-var stoptElem = document.getElementById('stopsharing')
+// stoptElem.addEventListener("click", async function(evt) {
+//     document.getElementById("startsharing").style.display = "block"
 
-stoptElem.addEventListener("click", async function(evt) {
-    document.getElementById("startsharing").style.display = "block"
+//     document.getElementById("stopsharing").style.display = "none"
 
-    document.getElementById("stopsharing").style.display = "none"
-
-    var data1 ={
-                    room : room,
-                    status:true,
-                    sender:username,
-                }
-                let tracks = video.srcObject.getTracks();
+//     var data1 ={
+//                     room : room,
+//                     status:true,
+//                     sender:username,
+//                 }
+//                 let tracks = video.srcObject.getTracks();
     
-                tracks.forEach(track => track.stop());
-                video.srcObject = null;    
+//                 tracks.forEach(track => track.stop());
+//                 video.srcObject = null;    
 
-socket.emit("stopbutton",data1)
+// socket.emit("stopbutton",data1)
 
-})
+// })
 
-
-document.getElementById('chat-input').addEventListener('keypress', (e)=>{
-    if(e.which === 13 && (e.target.value.trim())){
-        e.preventDefault();
-        alert(e.target.value)
-        
-        sendMsg(e.target.value);
-
-        setTimeout(()=>{
-            e.target.value = '';
-        }, 50);
-    }
-});
-
-
-function sendMsg(msg){
-    let data = {
-        room: room,
-        msg: msg,
-        sender: username
-    };
-
-    //emit chat message
-    socket.emit('chat', data);
-
-
-    //add localchat
-    h.addChat(data, 'local');
-}
 
 
 
