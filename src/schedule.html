@@ -33,7 +33,7 @@
         <!-- Links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="sass.html" style="font-size: 20px;color: black;" class="active" id="join">JOIN A MEETING</a>
+            <a href="/joinmeeting.html" style="font-size: 20px;color: black;" class="active" id="join">JOIN A MEETING</a>
           </li>
           &nbsp;    &nbsp;
           <li class="nav-item">
@@ -44,8 +44,7 @@
               <a href="" style="font-size: 20px;color: black;" id="schedule">SCHEDULE A MEETING</a>
             </li>
             &nbsp;    &nbsp;
-            <li class="nav-item"><a href="#" style="font-size: 10px;color: black;" style="color: blueviolet;"id="signinpopup" >SIGN IN</a></li>
-          <!-- Dropdown -->
+            <!-- <li class="nav-item"><a href="#" style="font-size: 10px;color: black;" style="color: blueviolet;"id="signinpopup" >SIGN IN</a></li>
           <li class="nav-item dropdown">
           <a href="" class="nav-link dropdown-toggle" style="font-size: 10px;color: black;" style="color: blueviolet;"id="navbardrop" data-toggle="dropdown" ></a>
 
@@ -57,7 +56,7 @@
             </div>
           </li>
           <li class="nav-item"><button type="button" class="btn btn-primary" style="background-color: blueviolet;" id="signup" onclick="buttonsignin()">SIGN UP</button></li>
-          &nbsp;   &nbsp;
+          &nbsp;   &nbsp; -->
         </ul>
       </nav>
       
@@ -65,6 +64,32 @@
           <div class="hero-image">
         </div>
         <br/>
+        <!----------------------------------------------------------------------------------------------->
+
+        <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                        
+                          <div class="modal-header">
+                            <!-- <h4 class="modal-title">Users Status</h4> -->
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <!-- <button class="close modalMinimize"> <i class='fa fa-minus'></i> </button> -->
+                          </div>
+                          
+                          <div class="modal-body">
+                            <div class="col-12 text-center" id='room-created'></div>
+      
+                            
+                           
+                          </div>
+                          
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          </div>
+                    
+                        </div>
+                      </div>  
+                    </div>
         <!------------------------------form-->
         <div class="wrapper">
           <h2 class="wrapper">SCHEDULE A MEETING</h2><br/><br/>
@@ -145,7 +170,7 @@
             <div class="row"><p class="Privacy">Privacy</p> <div class="v1"></div> <p class="Privacy">Terms</p> <div class="v1"></div> <p class="Privacy">About</p> <div class="v1"></div> <p class="Privacy">FaceChat</p> <div class="v1"></div> <p class="Privacy">Help</p>  <div class="v1"></div>  <p class="Privacy">FAQ's</p></div>
           </div>
           <div class="float-right">
-            <img src="assets/images/sort.png">
+            <img src="assets/images/sort@2x.png" onclick="scrolltop()" style="width: 60px;height: 60px;">
           </div>
           
         </div>
@@ -158,6 +183,15 @@
 </body>
 
 <script>
+  function generateRandomString(){
+        return Math.random().toString(36).slice(2).substring(0, 15);
+    }
+  function scrolltop() { 
+            window.scrollTo(0, 0); 
+        }
+    console.log(sessionStorage.getItem("meetingid"))
+  console.log(sessionStorage.getItem("email"))
+  console.log(sessionStorage.getItem("usernames"))
   document.getElementById("meetingid").defaultValue = sessionStorage.getItem("meetingid");
   document.getElementById("url").defaultValue =sessionStorage.getItem("url");
 
@@ -285,6 +319,82 @@ frm.submit(function (e) {
             })
 
 })
+//=================================================host====================================================================//
+document.getElementById("host").addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        
+    // var usernamedisplay = document.getElementById("navbardrop")
+    // if(window.getComputedStyle(usernamedisplay).display === "block"){
+    //   sessionStorage.removeItem("link")
+
+
+
+
+      var obj ={
+  email: sessionStorage.getItem("email"),
+  password : sessionStorage.getItem("password"),
+
+}
+$.ajax({
+                type: "post",
+                // url:"https://rapidqube-conference.herokuapp.com/signin",
+                url:"http://localhost:3000/signin",
+
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  console.log(result,"dfdsffffffffffffff") 
+                    var firstname = result.result.firstname;
+                    var roomName = result.result.groupname
+                    var id = result.result._id      
+                    sessionStorage.setItem("username",firstname)
+
+
+                       roomLink = `${location.origin}?room=${roomName.trim().replace(' ', '_')}_${generateRandomString()}/?${id}`;
+                       console.log(roomLink,"roomlink+++++++")
+                      // if(sessionStorage.getItem("link") == "host"){
+                       document.querySelector('#room-created').innerHTML = `Room successfully created. Click <a href='${roomLink}' onclick="mytest( '${roomLink}','${id}')">here</a> to enter room. 
+                Share the room link <a href=""> ${roomLink}</a> with your partners.`;
+                       $('#myModal').modal('show');
+    
+               
+                 
+                  
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    
+                }
+            })
+    //}
+//     else{
+//     Swal.fire({
+ 
+//  text: "Kindly signin",
+ 
+
+//  confirmButtonColor: '#3085d6',
+ 
+//  confirmButtonText: 'OK'
+// }).then((result) => {
+//   link = "host"
+//         sessionStorage.setItem("link",link)
+//     // alert("sdfdfdf")
+//   document.querySelector('#signview').style.display ="block"
+
+
+// })
+    
+//     }
+  
+
+
+  })
+//=====================================================================================================================
 
         
 

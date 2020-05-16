@@ -12,6 +12,7 @@ window.addEventListener('load', ()=>{
     $('#enter-room').click(function(e){
         e.preventDefault();
         document.querySelector('#toview').attributes.removeNamedItem('hidden');
+
         document.querySelector('#username-set').style.display ="none";
         var user = $("#username").val()
         // alert(user)
@@ -45,10 +46,11 @@ window.addEventListener('load', ()=>{
     console.log($("#username").val(),sessionStorage.getItem("username1"),"OOOOOOOOOOOOOOO")
      console.log(room1,"room1======>>>>")
      function emiting(){
-        alert("notindie")
+        // alert("notindie")
    if(room1 !=null || sessionStorage.getItem("username") || sessionStorage.getItem("meetingid") !=null){
-       
-            alert("wonderful")
+    document.querySelector('#toview1').attributes.removeNamedItem('hidden');
+
+            // alert("wonderful")
         
         // alert("woner")
         let commElem = document.getElementsByClassName('room-comm');
@@ -98,17 +100,17 @@ window.addEventListener('load', ()=>{
             });
             socket.on('button',(data)=>{
                 console.log(data,"avanthika=====>>>")
-                document.getElementById('start').disabled = data.status
-                document.getElementById('stop').disabled = true
+                 document.getElementById('start').disabled = data.status
+                // document.getElementById('stopsharing').disabled = true
                 // window.href ="./index1.html"
             })
             socket.on('stopbutton',(data)=>{
                 console.log(data,"avanthika=stop====>>>")
-                document.getElementById('start').disabled = false
-                document.getElementById('stop').disabled = false
-                document.getElementById("chat").style.display="block"
+                document.getElementById('startsharing').disabled = false
+                document.getElementById('stopsharing').disabled = false
+                // document.getElementById("chat").style.display="block"
 
-                $("#chat").show()
+                // $("#chat").show()
             })
             socket.on('chat', (data)=>{
                 console.log(data,"chatdata++++++++++++++++++")
@@ -186,7 +188,7 @@ window.addEventListener('load', ()=>{
             // console.log(image,"imagedata+++++++++++++++++")
            var img = document.getElementById("play") 
            img.src = image;
-           document.getElementById("chat").style.display="none"
+        //    document.getElementById("chat").style.display="none"
 
            
           
@@ -389,7 +391,7 @@ window.addEventListener('load', ()=>{
     
     }
     
-    const startElem = document.getElementById("startsharing");
+    const startElem = document.getElementById("start");
     var displayMediaOptions = {
         video: {
           cursor: "always"
@@ -398,7 +400,8 @@ window.addEventListener('load', ()=>{
       };
     
     startElem.addEventListener("click", async function(evt) {
-        alert("hiii")
+        // alert("hiii")
+        document.getElementById("chat").style.display ="none"
         document.getElementById("startsharing").style.display = "none"
     
         document.getElementById("stopsharing").style.display = "block"
@@ -422,6 +425,7 @@ window.addEventListener('load', ()=>{
     var stoptElem = document.getElementById('stopsharing')
     
     stoptElem.addEventListener("click", async function(evt) {
+
         document.getElementById("startsharing").style.display = "block"
     
         document.getElementById("stopsharing").style.display = "none"
@@ -434,7 +438,9 @@ window.addEventListener('load', ()=>{
                     let tracks = video.srcObject.getTracks();
         
                     tracks.forEach(track => track.stop());
-                    video.srcObject = null;    
+                    video.srcObject = null; 
+                    document.getElementById("chat").style.display ="block"
+   
     
     socket.emit("stopbutton",data1)
     

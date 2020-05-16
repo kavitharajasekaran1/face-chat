@@ -100,7 +100,9 @@ socket.on('username1', function(username) {
     socket.username = username;
     // socket.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
     // if(socket.username !=undefined){
-    io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+    // io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+    io.emit('is_online',{name:socket.username,status:"join"})
+
     console.log(socket.username,"username in server")
    // }
 
@@ -108,7 +110,8 @@ socket.on('username1', function(username) {
 socket.on('disconnect', function(username) {
     if(socket.username !=undefined){
         console.log("uuuuuuu")
-    io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+    // io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+    io.emit('is_online',{name:socket.username,status:"left"})
     }
 })
 socket.on('roomlink',function(data){

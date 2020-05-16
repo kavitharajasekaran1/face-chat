@@ -42,6 +42,104 @@
 </head>
 
 <body>
+  <!--------------------------------------------------------------------------------------------------------->
+<div id="toview1" hidden>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-white d-flex justify-content-between" >
+    <!-- Brand -->
+    <!-- <a class="navbar-brand" href="#">Logo</a> -->
+    <img src="./assets/images/Group 548@3x.png"
+        srcset="img/group-548@2x.png 2x,
+                img/group-548@3x.png 3x"
+        class="Group-548">
+      
+       <ul>
+        <!-- <img src="./assets/images/icon.png"
+        
+        class="Group-548" style="width:24px;height:24px" onclick="menuopen()"> -->
+        <div class="container" id="menucontainer" hidden>
+          <div class="more">
+              <!-- <button id="more-btn" class="more-btn">
+                  <span class="more-dot"></span>
+                  <span class="more-dot"></span>
+                  <span class="more-dot"></span>
+              </button> -->
+                <img src="./assets/images/icon.png" id="more-btn" class="more-btn"
+        
+        class="Group-548" style="width:25px;height:24px; margin-left:94px" onclick="showMenu()" > 
+              <div class="more-menu" id="supermenu" >
+                  <div class="more-menu-caret">
+                      <div class="more-menu-caret-outer"></div>
+                      <div class="more-menu-caret-inner"></div>
+                  </div>
+                  <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
+                      <li class="more-menu-item" role="presentation">
+                          <button type="button" class="more-menu-btn" role="menuitem">Edit profile</button>
+                      </li>
+                      <li class="more-menu-item" role="presentation">
+                          <button type="button" class="more-menu-btn" role="menuitem" onclick="schedulemeeting()">Schedule meeting</button>
+                      </li>
+                     
+                  </ul>
+              </div>
+          </div>
+      </div>
+       </ul>
+
+     
+
+
+  
+    <!-- Links -->
+   
+  </nav>
+  </div>
+  <div class="card scroll1" style="width: 28rem;height:30rem" id="userstatus" style="display:none">
+    <span class="pull-right clickable close-icon" onclick="closeicon()" data-effect="fadeOut"><i class="fa fa-times"></i></span>
+
+    <div class="card-body" >
+      <ul  class="service-list" id="messages" >
+        <!-- <a href="" id="atag">   <img src="./assets/images/user.svg" alt="card-image"  /></a>
+        <p >
+         
+          </P> -->
+
+   
+      </ul>
+
+
+      <!-- <h5 class="card-title">Card title</h5> -->
+      <!-- <div id="messages"></div> -->
+      </div>
+      
+
+    </div>
+  </div>
+
+
+
+
+
+  <!----------------------------------------------------------------------------------------------new-->
+  
+
+  <!-- <div class="card scroll1" style="width: 18rem;">
+    <div class="card-body">
+      <span class="pull-right clickable close-icon" data-effect="fadeOut"><i class="fa fa-times"></i></span>
+
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    </div>
+  </div> -->
+  <!----------------------------------------------------------------------------------------------new-->
+
+  
+  
+  
+  <!--------------------------------------------------------------------------------------------------------->
+  
+
 
   <div class="container-fluid" id='username-set' hidden >
     <div class="row">
@@ -72,33 +170,25 @@
       <span class="form-text small text-danger" id='err-msg-username'></span>
   </div>
   <div class="col-12 col-md-4 offset-md-4 mb-3 text-center">
-   <p> Please wait till the meeting will be hosted</p>
+   <p id="hostingtext"> Please wait till the meeting will be hosted</p>
    <div class="loader  center1"></div>
   </div>
   </div>
 
 
-
-  <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+<!--------------------------------------------------------------------------------------------------user status-->
+  <!-- <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
         <div class="modal-header">
           <h4 class="modal-title">Users Status</h4>
           <button type="button" class="close" data-dismiss="modal">×</button>
-          <!-- <button class="close modalMinimize"> <i class='fa fa-minus'></i> </button> -->
         </div>
         
         <div class="modal-body">
           <ul id="messages"></ul>
-          <!-- <p>I had not used a load balancer. Both the client and server used the 2.0.3 version of Socket.io (I can't remember all version I used). I do not know which browser is causing the problem However, most users have used Chrome. In my case, the disconnect was randomely so it can't reproduce.
-            And I changed to ws. I am not sure if the problem is solved.</p>
-            <p>I had not used a load balancer. Both the client and server used the 2.0.3 version of Socket.io (I can't remember all version I used). I do not know which browser is causing the problem However, most users have used Chrome. In my case, the disconnect was randomely so it can't reproduce.
-              And I changed to ws. I am not sure if the problem is solved.</p>
-          <p>I had not used a load balancer. Both the client and server used the 2.0.3 version of Socket.io (I can't remember all version I used). I do not know which browser is causing the problem However, most users have used Chrome. In my case, the disconnect was randomely so it can't reproduce.
-            And I changed to ws. I am not sure if the problem is solved.</p>
-            <p>I had not used a load balancer. Both the client and server used the 2.0.3 version of Socket.io (I can't remember all version I used). I do not know which browser is causing the problem However, most users have used Chrome. In my case, the disconnect was randomely so it can't reproduce.
-              And I changed to ws. I am not sure if the problem is solved.</p> -->
+         
          
         </div>
         
@@ -109,8 +199,8 @@
   
       </div>
     </div>  
-  </div>
-
+  </div> -->
+  
 
 
 
@@ -156,9 +246,9 @@
         <label for="msg"><b>Message</b></label>
         <div  id='chat-messages'  ></div>              
                      
-         <button class="btn btn-sm text-white pull-right d-md-none btn-no-effect" id='toggle-chat-pane'>
+         <!-- <button class="btn btn-sm text-white pull-right d-md-none btn-no-effect" id='toggle-chat-pane'>
                       <i class="fa fa-comment"></i> <span class="badge badge-danger very-small font-weight-lighter" id='new-chat-notification' hidden>New</span>
-                  </button>
+                  </button> -->
   
         <!-- <div class="row"> -->
             <textarea id='chat-input' class="form-control rounded-0 chat-box border-info" style="margin-top:260px" rows='2'  placeholder="Type here..."></textarea>
@@ -201,7 +291,7 @@
       <img src="" id="play" class="center">
       <div style="position: absolute; top: 50px; left: 50px;">
 
-          <canvas id="preview" width="1000" height="1000">
+          <canvas id="preview" width="1000" height="1000" hidden>
            Your browser does not support HTML5 Canvas.
           </canvas>
           </div>
@@ -226,9 +316,15 @@
    
 
 </div>
+
+
+
+
+
+
 <footer class="footer1 bg-dark  " id="toview" hidden>
   <div class="d-flex justify-content-center">     
-     <div class="  m-2 font-size:15px" >
+     <div class="  m-2 font-size:15px shrink" >
       <div class="circle center" id="counter"></div>
 
       <img src="assets/images/Paticipatation@2x.png" style="width: 40px;" hspace="30" onclick="modalopen()">
@@ -238,7 +334,7 @@
 
     
     </div>
-    <div class="text-center  m-2">
+    <div class="text-center  m-2 shrink">
       <div class="circle center" id="counter-chat" style="display: none;"></div>
 
       <img src="assets/images/002-client.png" hspace="30" style="width: 40px;">
@@ -246,21 +342,21 @@
       <p style="font-size: 15px;" onclick="openForm()">Chat</p>
     
     </div>
-    <div class="text-center  m-2" id="startsharing">
+    <div class="text-center  m-2 shrink" id="startsharing">
       <img src="assets/images/003-shared-folder@2x.png" hspace="30" style="width: 40px;" id="start">
       <p style="font-size: 15px;">Share Screen</p>
     
     </div>
-    <div class="text-center  m-2"  id ="stopsharing" style="display:none">
+    <div class="text-center  m-2 shrink"  id ="stopsharing" style="display:none">
       <img src="assets/images/003-shared-folder@2x.png" hspace="30" style="width: 40px; " id="stopshare">
       <p style="font-size: 15px;">Stop Share</p>
       </div>
-    <div class=" text-center  m-2" id="startButton" hidden>
+    <div class=" text-center  m-2 shrink" id="startButton" hidden>
       <img src="assets/images/004-microphone@2x.png" hspace="30" style="width: 40px;">
       <p style="font-size: 15px;">Record</p>
     
     </div>
-    <div class=" text-center  m-2" id="download1"  style="display: none">
+    <div class=" text-center  m-2 shrink" id="download1"  style="display: none">
      
      
       <img src="assets/images/004-microphone@2x.png" hspace="30" style="width: 40px;" >
@@ -273,27 +369,27 @@
     </div>
     <!-- <button id="downloading" onclick="recording1()" >Download</button> -->
 
-    <div class=" text-center  m-2" onclick="mutevideo()" id="mute">
+    <div class=" text-center  m-2 shrink" onclick="mutevideo()" id="mute">
       <img src="assets/images/005-microphone-1@2x.png" style="width: 50px;" hspace="40">
       <p style="font-size: 15px;">Mute</p>
     
     </div>
-    <div class=" text-center  m-2" onclick="unmutevideo()"  id="unmute" style="display: none;">
+    <div class=" text-center  m-2 shrink" onclick="unmutevideo()"  id="unmute" style="display: none;">
       <img src="assets/images/005-microphone-1@2x.png" style="width: 50px;" hspace="40">
       <p style="font-size: 15px;"> UnMute</p>
     
     </div>
-    <div class=" text-center  m-2 " id="videohide" >
+    <div class=" text-center  m-2 shrink " id="videohide" >
       <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40" >
       <p style="font-size: 15px;">Stop video</p>
     
     </div>
-    <div class=" text-center  m-2 " id="videodisplay" style="display: none;">
+    <div class=" text-center  m-2 shrink " id="videodisplay" style="display: none;">
       <img src="assets/images/video-camera@2x.png"  style="width: 50px;" hspace="40">
       <p style="font-size: 15px;">Start video</p>
     
     </div>
-    <div class=" text-center  m-2 p-3"  id ="end-meeting1" hidden>
+    <div class=" text-center  m-2 p-3 shrink"  id ="end-meeting1" hidden>
       <!-- <img src="assets/images/video-camera@2x.png" style="width: 50px;" hspace="40"> -->
       <p style="font-size: 20px;color: red;  cursor: pointer;" id="end-meeting">End Meeting</p>
     
@@ -305,8 +401,62 @@
   
 </body>
 <script>
-  // var socket = io.connect("http://localhost:3000")
-  var socket = io.connect("https://rapidqube-conference.herokuapp.com")
+  console.log(sessionStorage.getItem("meetingid"))
+  console.log(sessionStorage.getItem("email"))
+  console.log(sessionStorage.getItem("usernames"))
+
+  
+  function schedulemeeting(){
+    alert("ooo")
+    window.location ="./schedule.html"
+  }
+  //============================================================================================================//
+      document.getElementById("userstatus").style.display ="none"
+
+  $('.close-icon').on('click',function() {
+    document.getElementById("userstatus").style.display ="none"
+
+  // $(this).closest('.card').fadeOut();
+})
+//===============================================================================================================//
+var el = document.querySelector('.more');
+var btn = el.querySelector('.more-btn');
+var menu = el.querySelector('.more-menu');
+var visible = false;
+
+function showMenu(e) {
+    // e.preventDefault();
+    if (!visible) {
+        visible = true;
+        el.classList.add('show-more-menu');
+        menu.setAttribute('aria-hidden', false);
+        document.addEventListener('mousedown', hideMenu, false);
+    }
+}
+
+function hideMenu(e) {
+    if (btn.contains(e.target)) {
+      
+        return;
+    }
+    if (e.target.id == "supermenu" || $(e.target).parents("#supermenu").length) {
+      // alert("Inside div");
+      visible = true
+    }
+    else {
+      // alert("hide1")
+        visible = false;
+        el.classList.remove('show-more-menu');
+        menu.setAttribute('aria-hidden', true);
+        document.removeEventListener('mousedown', hideMenu);
+    }
+}
+
+btn.addEventListener('click', showMenu, false);
+
+//=====================================================================================================================//
+  var socket = io.connect("http://localhost:3000")
+  // var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
   console.log(sessionStorage.getItem('usernames'),"inside the userpage++++++++++++++++++")
   if( sessionStorage.getItem( "usernames") !=null){
@@ -314,23 +464,16 @@
   }
 
   window.onload = function () {
-  alert("me1")
+  // alert("me1")
 
    sessionStorage.removeItem( "username");
 };
 var vid = document.getElementById("local");
 
-// function stopvideo(){
-//   document.getElementById('local').remove();
-// }
+
 
 function stopvideo(){
-  // if(vid.play()){
-  //   vid.pause()
-  // }
-  // else{
-  //   vid.play()   
-  // }
+ 
   console.log(myStream,"mystream+++++++++++++++++++++++++++++++++++++")
  
   myStream.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
@@ -339,38 +482,18 @@ function stopvideo(){
             }
   var meetingid = sessionStorage.getItem("meetingid")
  
-  // console.log($('#toview').is(':visible'),"+++++++++++++++++++++++++")
   $('#counter').click(function(e){
     e.preventDefault();
-    
-    $('#myModal').modal('show');
+  
+    document.getElementById("userstatus").style.display ="block"
+
     
 
 })  
 
-if (!$('#toview').is(':visible')){
-
-// var socket = io.connect("http://localhost:3000")
-}
-// var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
 
-// function mutevideo(){
-// var vid = document.getElementById("local")
-// vid.muted = true;
-// alert(vid.muted)
-// document.getElementById("unmute").style.display ="block"
-// document.getElementById("mute").style.display ="none"
 
-// }
-// function unmutevideo(){
-//   var vid = document.getElementById("local")
-// vid.muted = false;
-// alert(vid.muted)
-// document.getElementById("mute").style.display ="block"
-// document.getElementById("unmute").style.display ="none"
-
-// }
 
             socket.on('counter', function (data) {
     console.log(data.count,"counter====>>>")
@@ -383,9 +506,38 @@ if (!$('#toview').is(':visible')){
  
 
         socket.on('is_online', (data) =>{
-                console.log(data,"is_online")
+                console.log(data.name,data.status,"is_online")
+
                 if(data!=undefined){
-                            $('#messages').append($('<li>').html(data));
+
+                  var li = document.createElement("li")
+                  var a = document.createElement('a');
+                  
+                  var img = document.createElement("img")
+                  img.src ="./assets/images/user.svg"
+                 
+                  //img.alt ="card-image"
+                  a.append(img)
+                  // a.append(span)
+
+                  console.log(a)
+                  var p= document.createElement("p")
+                  if(data.status =="join"){
+                  p.innerHTML = data.name +" "+"Join into chat"
+                  }
+                  else{
+                    p.innerHTML = data.name +" "+"left the chat"
+                  }
+                  var t = document.getElementById("messages")
+                  li.append(a)
+                  li.append(p)
+                  t.append(li)
+                  var br = document.createElement("br")
+                  t.append(br)
+                  console.log(li,"TTTTTTTTTTTTTTTTTTTT")
+                  
+                
+//                              
                             }
                             ding()
                         })
@@ -433,8 +585,8 @@ $('#end-meeting').click(function(e){
  
   $.ajax({
                 type: "post", 
-                url:"https://rapidqube-conference.herokuapp.com/endmeeting",
-                // url:"http://localhost:3000/endmeeting",
+                // url:"https://rapidqube-conference.herokuapp.com/endmeeting",
+                url:"http://localhost:3000/endmeeting",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -475,6 +627,8 @@ win.close();
 
 window.addEventListener('load', ()=>{
   var room = sessionStorage.getItem("room")
+  document.querySelector('#wait').attributes.removeNamedItem('hidden');
+    document.getElementById("hostingtext").style.display ="none"
   // console.log(singin_status,"signin status")
 
   // if((sessionStorage.getItem("meetingid") !=null)){
@@ -493,10 +647,13 @@ window.addEventListener('load', ()=>{
     clearTimeout(checking);
     // socket.emit('username1',sessionStorage.getItem('username'))
 
-
+    document.querySelector('#wait').style.display ="none"
+ 
     document.querySelector('#toview').attributes.removeNamedItem('hidden');
     document.querySelector('#end-meeting1').attributes.removeNamedItem('hidden');
     document.querySelector('#startButton').attributes.removeNamedItem('hidden');
+    document.querySelector('#menucontainer').attributes.removeNamedItem('hidden');
+
 
 
   
@@ -508,6 +665,9 @@ window.addEventListener('load', ()=>{
 
 
   function execution(){
+    // document.querySelector('#wait').attributes.removeNamedItem('hidden');
+    // document.getElementById("hostingtext").style.display ="none"
+
   var url = document.URL
   var url1 = url.split("?")
   console.log(url1,"spliting")
@@ -528,8 +688,8 @@ window.addEventListener('load', ()=>{
  
   $.ajax({
                 type: "post", 
-                url:"https://rapidqube-conference.herokuapp.com/signincheck",
-                // url:"http://localhost:3000/signincheck",
+                // url:"https://rapidqube-conference.herokuapp.com/signincheck",
+                url:"http://localhost:3000/signincheck",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -817,12 +977,17 @@ const mediaSource = new MediaSource();
 
 
   function openForm() {
-  document.getElementById("myForm").style.display = "block";
-  // $('#counter-chat').removeAttr('hidden');
-  document.getElementById("counter-chat").style.display = "none";
+
+    if(document.getElementById("myForm").style.display == "block"){
+      document.getElementById("myForm").style.display = "none";
+    }
+    else{
+      document.getElementById("myForm").style.display = "block"
+      document.getElementById("counter-chat").style.display = "none";
+
+    }
 
 
-  // document.getElementById("counter-chat").style.visibility ="hidden"
 }
 
 function closeForm() {
@@ -839,6 +1004,7 @@ function closeForm() {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   /* background-color: #000080; */
 }
 .circle {
@@ -991,6 +1157,192 @@ body {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+.shrink img:hover{
+-webkit-transform: scale(0.8);
+-ms-transform: scale(0.8);
+transform: scale(0.8);
+transition: 1s ease-in-out;
+}
+.mdl-grid {
+	max-width: 300px;
+}
+.mdl-card__media {
+	margin: 0;
+}
+.mdl-card__media > img {
+	max-width: 100%;
+}
+.mdl-card__actions {
+	display: flex;
+	box-sizing:border-box;
+	align-items: center;
+}
+.mdl-card__actions > .mdl-button--icon {
+	margin-right: 3px;
+	margin-left: 3px;
+}
+.close-icon {
+  cursor: pointer;
+}
+.scroll1 {
+    max-height: 100px;
+    overflow-y: auto;
+}
+.card {
+  margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+.service-list {
+list-style-type: none;
+margin-left:0px;
+padding-left:0px;
+display: inline-block;
+}
+
+.service-list img
+{
+float:left;
+}
+
+.service-list p,.service-list h3 {
+text-align: right; 
+display:inline-block;
+padding: 0;
+}
+
+
+
+.more-menu {
+    width: 100px;
+}
+
+/* More Button / Dropdown Menu */
+
+.more-btn,
+.more-menu-btn {
+    background: none;
+    border: 0 none;
+    line-height: normal;
+    overflow: visible;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+}
+
+.more-dot {
+    background-color: #aab8c2;
+    margin: 0 auto;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 1px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.more-menu {
+  width:150px;
+  height: 200px;
+    position: absolute;
+    top: 100%;
+    z-index: 900;
+    float: left;
+    padding: 10px 0;
+    margin-top: 9px;
+    background-color: #fff;
+    border: 1px solid #ccd8e0;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translate(0, 15px) scale(.95);
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    pointer-events: none;
+}
+
+.more-menu-caret {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    width: 18px;
+    height: 10px;
+    float: left;
+    overflow: hidden;
+}
+
+.more-menu-caret-outer,
+.more-menu-caret-inner {
+    position: absolute;
+    display: inline-block;
+    margin-left: -1px;
+    font-size: 0;
+    line-height: 1;
+}
+
+.more-menu-caret-outer {
+    border-bottom: 10px solid #c1d0da;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: auto;
+    left: 0;
+    top: 0;
+    width: auto;    
+}
+
+.more-menu-caret-inner {
+    top: 1px;
+    left: 1px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #fff;
+}
+
+.more-menu-items {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.more-menu-item {
+    display: block;
+}
+
+.more-menu-btn {
+    min-width: 100%;
+    color: #66757f;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 5px 20px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.more-menu-item:hover {
+    background-color: #489fe5;
+}
+
+.more-menu-item:hover .more-menu-btn {
+    color: #fff;
+}
+
+.more-btn:hover .more-dot,
+.show-more-menu .more-dot {
+    background-color: #516471;
+}
+
+.show-more-menu .more-menu {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    pointer-events: auto;
+}
+
 
 
 

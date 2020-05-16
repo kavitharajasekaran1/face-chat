@@ -102,11 +102,11 @@ const stream = (socket)=>{
 
     });
     socket.on('button',(data)=>{
-        console.log(data,"button status")
+        console.log(data,"button status+++++++++++")
         socket.to(data.room).emit('button',data);
     })
     socket.on('stream',function(image){
-         console.log(image,"streammmmmmmmmm")
+        //  console.log(image,"streammmmmmmmmm")
         socket.broadcast.emit('stream',image)
     })
     

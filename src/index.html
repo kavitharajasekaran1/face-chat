@@ -308,8 +308,8 @@ function cronfun(param1,param2){
         }
         $.ajax({
                 type: "post",
-                url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
-                // url:"http://localhost:3000/meetingstarted",
+                // url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
+                url:"http://localhost:3000/meetingstarted",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -395,8 +395,8 @@ function cronfun(param1,param2){
 }
 $.ajax({
                 type: "post",
-                url:"https://rapidqube-conference.herokuapp.com/signin",
-                // url:"http://localhost:3000/signin",
+                // url:"https://rapidqube-conference.herokuapp.com/signin",
+                url:"http://localhost:3000/signin",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -538,8 +538,8 @@ var obj ={
 }
 $.ajax({
                 type: "post",
-                url:"https://rapidqube-conference.herokuapp.com/signin",
-                // url:"http://localhost:3000/signin",
+                // url:"https://rapidqube-conference.herokuapp.com/signin",
+                url:"http://localhost:3000/signin",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -640,8 +640,8 @@ else if(sessionStorage.getItem("link")=="schedule"){
     }
     $.ajax({
                 type: "post",
-                 url:"https://rapidqube-conference.herokuapp.com/startmeeting",
-                // url:"http://localhost:3000/startmeeting",
+                //  url:"https://rapidqube-conference.herokuapp.com/startmeeting",
+                url:"http://localhost:3000/startmeeting",
 
                 
                 data: JSON.stringify(obj),
