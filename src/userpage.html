@@ -731,7 +731,7 @@ window.addEventListener('load', ()=>{
 
 
   var checking =  setInterval(function(){ execution(); }, 3000);
-  if(room !=null || room == "" || meetingid !=null ){
+  if(room !=null || room == "" || meetingid !=null || sessionStorage.getItem("email") !=""){
     console.log("entering",sessionStorage.getItem("room"),sessionStorage.getItem('username'))
     // clearInterval(checking);
     clearTimeout(checking);
