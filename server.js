@@ -7,6 +7,20 @@ app.use(bodyParser.json());
 const cron = require("node-cron");
 var schedule = require('node-schedule');
 var nodemailer = require('nodemailer');
+var https = require('https');
+// var fs = require('fs');
+// var privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
+// console.log(privateKey,"privatekay===")
+// var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
+// // console.log(certificate)
+// var credentials = {key: privateKey, cert: certificate};
+// var httpsServer = https.createServer(credentials, app);
+
+
+
+
+
+
 
 
 
@@ -34,9 +48,6 @@ app.get('/joinmeeting.html', function (req, res) {
 app.get('/singup.html', function (req, res) {
     res.sendFile(path.join(__dirname+'/src/singup.html'));
   })
-  // app.get('/userpage1.html', function (req, res) {
-  //   res.sendFile(path.join(__dirname+'/src/userpage1.html'));
-  // })
   app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname+'/src/userpage.html'));
   })
@@ -138,3 +149,4 @@ socket.on('endmeeting',function(data){
 })
 
 server.listen(port, () => console.log(`Active on ${port} port`));
+// httpsServer.listen(8080, () => console.log(`Active on ${8080} port`));

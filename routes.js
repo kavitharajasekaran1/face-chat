@@ -66,6 +66,17 @@ module.exports= router =>{
          
         });
     });
+    router.post('/passwordchange', async (req, res) => {
+        console.log(req.body,"passwordchangerequest")
+        let emailid= req.body.emailid 
+        let newpassword= req.body.newpassword;
+        persondetails.updateOne({"email":emailid},{$set:{"password":newpassword}}, function (error, data) {
+            console.log(data,"data=====>>>")
+
+            res.send({ result:"success"})
+         
+        });
+    });
     router.post('/signincheck', async (req, res) => {
         var url = req.body.url;
         var meetingid = req.body.meetingid

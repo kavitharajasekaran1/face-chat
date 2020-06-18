@@ -237,7 +237,7 @@ for(i = 0; i < ar.length; i++){
 
               $.ajax({
                 type: "post",
-                url:"https://rapidqube-conference.herokuapp.com/schedule",
+                url:"http://localhost:8080/schedule",
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 
@@ -279,7 +279,7 @@ frm.submit(function (e) {
 
     $.ajax({
                 type: "post",
-                url:"https://rapidqube-conference.herokuapp.com/signup",
+                url:"http://localhost:8080/signup",
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
                 
@@ -338,7 +338,7 @@ document.getElementById("host").addEventListener('click', (ev)=>{
 $.ajax({
                 type: "post",
                 // url:"https://rapidqube-conference.herokuapp.com/signin",
-                url:"https://rapidqube-conference.herokuapp.com/signin",
+                url:"http://localhost:8080/signin",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',

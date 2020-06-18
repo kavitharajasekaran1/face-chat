@@ -189,9 +189,9 @@
     </div>
     
     <div class="row mt-2">
-        <div class="col-12 text-center">
+        <!-- <div class="col-12 text-center">
             <span class="form-text small text-danger" id='err-msg-username'></span>
-        </div>
+        </div> -->
 
         <div class="col-12 col-md-4 offset-md-4 mb-3">
             <label for="username">Your Name</label>
@@ -250,7 +250,7 @@
   <!------------------------------------------chat------------------------------------------------>
 
 
-  <div class="col-md-3 chat-col d-print-none mb-2 bg-info" id='chat-pane' >
+  <div class="col-md-3 chat-col d-print-none mb-2 bg-info" id='chat-pane1' hidden >
 
     <div class="chat-popup" id="myForm" id='chat-pane' style="height: 400px;overflow:auto;margin-bottom: 118px;" >
       <form  class="form-container" style="height:30%">
@@ -470,7 +470,7 @@ e.preventDefault();
         $.ajax({
                 type: "post",
                 // url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
-                url:"https://rapidqube-conference.herokuapp.com/passwordchange",
+                url:"http://localhost:8080/passwordchange",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -545,7 +545,7 @@ function hideMenu(e) {
 btn.addEventListener('click', showMenu, false);
 
 //=====================================================================================================================//
-  var socket = io.connect("https://rapidqube-conference.herokuapp.com")
+  var socket = io.connect("http://localhost:8080")
   // var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
   console.log(sessionStorage.getItem('usernames'),"inside the userpage++++++++++++++++++")
@@ -676,7 +676,7 @@ $('#end-meeting').click(function(e){
   $.ajax({
                 type: "post", 
                 // url:"https://rapidqube-conference.herokuapp.com/endmeeting",
-                url:"https://rapidqube-conference.herokuapp.com/endmeeting",
+                url:"http://localhost:8080/endmeeting",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -731,7 +731,7 @@ window.addEventListener('load', ()=>{
 
 
   var checking =  setInterval(function(){ execution(); }, 3000);
-  if(room !=null || room == "" || meetingid !=null || sessionStorage.getItem("email") !=""){
+  if(room !=null || room == "" || meetingid !=null ){
     console.log("entering",sessionStorage.getItem("room"),sessionStorage.getItem('username'))
     // clearInterval(checking);
     clearTimeout(checking);
@@ -779,7 +779,7 @@ window.addEventListener('load', ()=>{
   $.ajax({
                 type: "post", 
                 // url:"https://rapidqube-conference.herokuapp.com/signincheck",
-                url:"https://rapidqube-conference.herokuapp.com/signincheck",
+                url:"http://localhost:8080/signincheck",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -1074,6 +1074,7 @@ const mediaSource = new MediaSource();
     else{
       document.getElementById("myForm").style.display = "block"
       document.getElementById("counter-chat").style.display = "none";
+      document.querySelector('#chat-pane1').attributes.removeNamedItem('hidden');
 
     }
 

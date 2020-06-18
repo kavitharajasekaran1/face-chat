@@ -309,7 +309,7 @@ function scrolltop() {
         $.ajax({
                 type: "post",
                 // url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
-                url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
+                url:"http://localhost:8080/meetingstarted",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -320,8 +320,6 @@ function scrolltop() {
                   var result = response
                   if(result.result =="success"){
                     window.location =sessionStorage.getItem("url")
-                    // window.location ="./userpage1.html"
-
                   }
                   else{
                     Swal.fire("Something Went Wrong")
@@ -398,7 +396,7 @@ function scrolltop() {
 $.ajax({
                 type: "post",
                 // url:"https://rapidqube-conference.herokuapp.com/signin",
-                url:"https://rapidqube-conference.herokuapp.com/signin",
+                url:"http://localhost:8080/signin",
                 data: JSON.stringify(obj),
                 contentType: 'application/json',              
 
@@ -539,7 +537,7 @@ var obj ={
 $.ajax({
                 type: "post",
                 // url:"https://rapidqube-conference.herokuapp.com/signin",
-                url:"https://rapidqube-conference.herokuapp.com/signin",
+                url:"http://localhost:8080/signin",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -641,7 +639,7 @@ else if(sessionStorage.getItem("link")=="schedule"){
     $.ajax({
                 type: "post",
                 //  url:"https://rapidqube-conference.herokuapp.com/startmeeting",
-                url:"https://rapidqube-conference.herokuapp.com/startmeeting",
+                url:"http://localhost:8080/startmeeting",
 
                 
                 data: JSON.stringify(obj),
