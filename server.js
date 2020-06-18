@@ -34,6 +34,9 @@ app.get('/joinmeeting.html', function (req, res) {
 app.get('/singup.html', function (req, res) {
     res.sendFile(path.join(__dirname+'/src/singup.html'));
   })
+  app.get('/userpage1.html', function (req, res) {
+    res.sendFile(path.join(__dirname+'/src/userpage1.html'));
+  })
   app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname+'/src/userpage.html'));
   })
