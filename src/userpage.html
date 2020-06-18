@@ -73,7 +73,7 @@
                   </div>
                   <ul class="more-menu-items" tabindex="-1" role="menu" aria-labelledby="more-btn" aria-hidden="true">
                       <li class="more-menu-item" role="presentation">
-                          <button type="button" class="more-menu-btn" role="menuitem">Edit profile</button>
+                          <button type="button" class="more-menu-btn" onclick="editprofile()" role="menuitem">Account Setting</button>
                       </li>
                       <li class="more-menu-item" role="presentation">
                           <button type="button" class="more-menu-btn" role="menuitem" onclick="schedulemeeting()">Schedule meeting</button>
@@ -84,6 +84,48 @@
           </div>
       </div>
        </ul>
+       <!--------------------------------profile modal form-------------------------------------------------------->
+       <div class="modal fade" id="profilemodal" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <h5 class="modal-title" id="exampleModalLabel">Account Setting</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+           <form id="contactForm1" method="POST">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="email1">Email address</label>
+                  <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                  <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small>
+                </div>
+                <div class="form-group">
+                  <label for="password1">Change Password</label>
+                  <input type="password" class="form-control" id="password1" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"       id="url" placeholder="Enter your Password" required>
+                </div>
+                <div class="form-group">
+                  <label for="password1">Confirm Password</label>
+                  <input type="password" class="form-control" id="password2" placeholder="Confirm Password" required>
+                </div>
+              </div>
+              <div class="modal-footer border-top-0 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success" >Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+       <!---------------------------------------------------------------------------------------------------------------->
 
      
 
@@ -404,6 +446,54 @@
   console.log(sessionStorage.getItem("meetingid"))
   console.log(sessionStorage.getItem("email"))
   console.log(sessionStorage.getItem("usernames"))
+  document.getElementById("email1").defaultValue =sessionStorage.getItem("email");
+  //=================================edit profile==================================================//
+  function editprofile(){
+    $('#profilemodal').modal('show');
+
+  }
+  var frm = $('#contactForm1');
+
+  frm.submit(function (e) {
+
+e.preventDefault();
+    alert($("#password1").val())
+    if($("#password1").val() !=$("#password2").val()){
+      Swal.fire("Password should match")
+    }
+    else{
+
+      obj={
+         emailid:sessionStorage.getItem("email"),
+          newpassword: $("#password1").val()
+        }
+        $.ajax({
+                type: "post",
+                // url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
+                url:"https://rapidqube-conference.herokuapp.com/passwordchange",
+
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                
+
+                success: function(response) {
+                  console.log(response,"response>>>>>")
+                  var result = response
+                  if(result.result =="success"){
+                    Swal.fire("Your password is updated successfully")
+                    $('#profilemodal').modal('hide');
+
+                    
+
+                                    }
+                  else{
+                    Swal.fire("Something Went Wrong")
+                  }
+                }
+              })
+
+    }
+  })
 
   
   function schedulemeeting(){
@@ -455,7 +545,7 @@ function hideMenu(e) {
 btn.addEventListener('click', showMenu, false);
 
 //=====================================================================================================================//
-  var socket = io.connect("http://localhost:3000")
+  var socket = io.connect("https://rapidqube-conference.herokuapp.com")
   // var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
   console.log(sessionStorage.getItem('usernames'),"inside the userpage++++++++++++++++++")
@@ -586,7 +676,7 @@ $('#end-meeting').click(function(e){
   $.ajax({
                 type: "post", 
                 // url:"https://rapidqube-conference.herokuapp.com/endmeeting",
-                url:"http://localhost:3000/endmeeting",
+                url:"https://rapidqube-conference.herokuapp.com/endmeeting",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -689,7 +779,7 @@ window.addEventListener('load', ()=>{
   $.ajax({
                 type: "post", 
                 // url:"https://rapidqube-conference.herokuapp.com/signincheck",
-                url:"http://localhost:3000/signincheck",
+                url:"https://rapidqube-conference.herokuapp.com/signincheck",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -1342,6 +1432,7 @@ padding: 0;
     transform: translate(0, 0) scale(1);
     pointer-events: auto;
 }
+
 
 
 

@@ -23,7 +23,7 @@ app.use('/', router);
 let stream = require('./src/stream');
 
 let path = require('path');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 app.use('/assets', express.static(path.join(__dirname, '/src/assets')));
 
