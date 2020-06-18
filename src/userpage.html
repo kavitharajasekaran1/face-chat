@@ -470,7 +470,7 @@ e.preventDefault();
         $.ajax({
                 type: "post",
                 // url:"https://rapidqube-conference.herokuapp.com/meetingstarted",
-                url:"http://localhost:8080/passwordchange",
+                url:"https://rapidqube-conference.herokuapp.com/passwordchange",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -545,7 +545,7 @@ function hideMenu(e) {
 btn.addEventListener('click', showMenu, false);
 
 //=====================================================================================================================//
-  var socket = io.connect("http://localhost:8080")
+  var socket = io.connect("https://rapidqube-conference.herokuapp.com")
   // var socket = io.connect("https://rapidqube-conference.herokuapp.com")
 
   console.log(sessionStorage.getItem('usernames'),"inside the userpage++++++++++++++++++")
@@ -676,7 +676,7 @@ $('#end-meeting').click(function(e){
   $.ajax({
                 type: "post", 
                 // url:"https://rapidqube-conference.herokuapp.com/endmeeting",
-                url:"http://localhost:8080/endmeeting",
+                url:"https://rapidqube-conference.herokuapp.com/endmeeting",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
@@ -779,7 +779,7 @@ window.addEventListener('load', ()=>{
   $.ajax({
                 type: "post", 
                 // url:"https://rapidqube-conference.herokuapp.com/signincheck",
-                url:"http://localhost:8080/signincheck",
+                url:"https://rapidqube-conference.herokuapp.com/signincheck",
 
                 data: JSON.stringify(obj),
                 contentType: 'application/json',
