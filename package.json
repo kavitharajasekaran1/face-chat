@@ -15,7 +15,7 @@
     "express-http-to-https": "^1.1.4",
     "googleapis": "^50.0.0",
     "http": "0.0.1-security",
-    "moment": "^2.25.1",
+    "moment": "^2.29.4",
     "mongoose": "^5.9.10",
     "mongoose-type-url": "^2.0.0",
     "node-cron": "^2.0.3",
