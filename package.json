@@ -9,9 +9,9 @@
   "author": "Kavitha Rajasekaran",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-http-to-https": "^1.1.4",
     "googleapis": "^50.0.0",
     "http": "0.0.1-security",
